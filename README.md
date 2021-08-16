@@ -1,27 +1,22 @@
 # PasswordGenerator
 
-[list of password special characters](https://www.owasp.org/index.php/Password_special_characters)
+WHEN the user clicks the "Generate Password" button, they are presented with a series of prompts for password criteria.
 
-WHEN I click the button to generate a password
- I am presented with a series of prompts for password criteria
+WHEN prompted for password criteria the user can select which criteria to include in the password, including lowercase, uppercase, numeric, and/or special characters.
 
-WHEN prompted for password criteria
-    I can select which criteria to include in the password
+WHEN prompted for the length of the password, the user can choose a length between 8-128 characters.
 
-WHEN prompted for the length of the password
-    THEN I can choose a length of at least 8 characters and no more than 128 characters
+WHEN asked for character types to include in the password, the user can confirm whether or not to include the given character type. 
 
-WHEN asked for character types to include in the password
-    THEN I can confirm whether or not to include lowercase, uppercase, numeric, and/or special characters
+WHEN the user answers each prompt, their input should be validated.
 
-WHEN I answer each prompt
-    THEN my input should be validated and at least one character type should be selected
+WHEN all prompts are answered, at least one character type should be selected before generating password.
 
-WHEN all prompts are answered
-    THEN a password is generated that matches the selected criteria
+WHEN all prompts are answered and at least one character type is selected, a password is generated that matches the selected criteria.
 
-WHEN the password is generated
-    THEN the password is either displayed in an alert or written to the page
+WHEN the password is generated, the password is either displayed in an alert or written to the page.
+
+
 
 * Should not produce any errors in the console when you inspect it using Chrome DevTools.
 
