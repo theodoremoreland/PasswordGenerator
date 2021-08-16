@@ -47,6 +47,8 @@ const generatePassword = (criteria) => {
     const keySetCount = Object.keys(characterSets).length;
     let currentKeyIndex = 0;
 
+    if (keySetCount === 0) alert("Could not generate password becuase no character set was chosen.");
+
     for (let i = 0; i < length; i++) {
         const currentKey = Object.keys(characterSets)[currentKeyIndex];
         const currentSet = characterSets[currentKey];
