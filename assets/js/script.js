@@ -1,8 +1,8 @@
 import Criterion from "./classes/Criterion.js";
 import { criterionPrompt } from "./criterionPrompt.js";
 
-const desiredPasswordLength = new Criterion("Length of password (must be between 8-128)?", "16", "range");
-const shouldHaveLowercaseLetters = new Criterion("Inlcude lowercase letters (yes/no)?", "yes", "binary");
+const desiredPasswordLength = new Criterion("Length of password (must be between 8-128)?", "128", "range");
+const shouldHaveLowercaseLetters = new Criterion("Include lowercase letters (yes/no)?", "yes", "binary");
 const shouldHaveUppercaseLetters = new Criterion("Include UPPERCASE letters (yes/no)?", "yes", "binary");
 const shouldHaveNumbers = new Criterion("Include numbers (yes/no)?", "yes", "binary");
 const shouldHaveSpecialCharacters = new Criterion("Include special characters (yes/no)?", "yes", "binary");
@@ -35,7 +35,7 @@ const generatePassword = (criteria) => {
     const lowercaseLetters = "abcdefghijklmnopqrstuvwxyz";
     const uppercaseLetters = lowercaseLetters.toUpperCase();
     const numbers = "0123456789";
-    const specialCharacters = " !\"#$%&'()*+,-./:;<=>?@[\\]^_`{|}~";
+    const specialCharacters = [" ", "!", '"', "#", "$", "%", "&", "'", "(", ")", "*", "+", ",", "-", ".", "/", ":", ";", "<", "=", ">", "?", "@", "[", "\\", "]", "^", "_", "`", "{", "|", "}", "~"];
     let generatedPassword = "";
     let characterSets = {};
 
@@ -47,7 +47,7 @@ const generatePassword = (criteria) => {
     const keySetCount = Object.keys(characterSets).length;
     let currentKeyIndex = 0;
 
-    if (keySetCount === 0) alert("Could not generate password becuase no character set was chosen.");
+    if (keySetCount === 0) alert("Could not generate password because no character set was chosen.");
 
     for (let i = 0; i < length; i++) {
         const currentKey = Object.keys(characterSets)[currentKeyIndex];
