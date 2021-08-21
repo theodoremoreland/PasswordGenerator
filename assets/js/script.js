@@ -1,70 +1,73 @@
-import Criterion from "./classes/Criterion.js";
-import { criterionPrompt } from "./criterionPrompt.js";
+import CharacterSet from "./classes/CharacterSet.js";
+import Criteria from "./classes/Criteria.js";
 
-const desiredPasswordLength = new Criterion("Length of password (must be between 8-128)?", "128", "range");
-const shouldHaveLowercaseLetters = new Criterion("Include lowercase letters (yes/no)?", "yes", "binary");
-const shouldHaveUppercaseLetters = new Criterion("Include UPPERCASE letters (yes/no)?", "yes", "binary");
-const shouldHaveNumbers = new Criterion("Include numbers (yes/no)?", "yes", "binary");
-const shouldHaveSpecialCharacters = new Criterion("Include special characters (yes/no)?", "yes", "binary");
 const generateBtn = document.querySelector("#generate");
+const lowercaseLetters = new CharacterSet(
+    "lowercase letters",
+    "abcdefghijklmnopqrstuvwxyz",
+    true
+);
+const uppercaseLetters = new CharacterSet(
+    "uppercase letters",
+    lowercaseLetters.characters.toUpperCase(),
+    true
+);
+const numbers = new CharacterSet(
+    "numbers",
+    "0123456789",
+    true
+);
+const specialCharacters = new CharacterSet(
+    "special characters",
+    [" ", "!", '"', "#", "$", "%", "&", "'", "(", ")", "*", "+", ",", "-", ".", "/", ":", ";", "<", "=", ">", "?", "@", "[", "\\", "]", "^", "_", "`", "{", "|", "}", "~"],
+);
 
-const getUserSelectedCriteria = () => {
-    const length = criterionPrompt(desiredPasswordLength);
-    const useLowercaseLetters = criterionPrompt(shouldHaveLowercaseLetters);
-    const useUppercaseLetters = criterionPrompt(shouldHaveUppercaseLetters);
-    const useNumbers = criterionPrompt(shouldHaveNumbers);
-    const useSpecialCharacters = criterionPrompt(shouldHaveSpecialCharacters);
+const criteria = new Criteria(16, [lowercaseLetters, uppercaseLetters, numbers, specialCharacters]);
 
-    return {
-        length,
-        useLowercaseLetters,
-        useUppercaseLetters,
-        useNumbers,
-        useSpecialCharacters
-    }
-}
-
-const generatePassword = (criteria) => {
-    const { 
-        length,
-        useLowercaseLetters,
-        useUppercaseLetters,
-        useNumbers,
-        useSpecialCharacters
-    } = criteria; 
-    const lowercaseLetters = "abcdefghijklmnopqrstuvwxyz";
-    const uppercaseLetters = lowercaseLetters.toUpperCase();
-    const numbers = "0123456789";
-    const specialCharacters = [" ", "!", '"', "#", "$", "%", "&", "'", "(", ")", "*", "+", ",", "-", ".", "/", ":", ";", "<", "=", ">", "?", "@", "[", "\\", "]", "^", "_", "`", "{", "|", "}", "~"];
-    let generatedPassword = "";
-    let characterSets = {};
-
-    if (["yes", "1", "y"].includes(useLowercaseLetters)) characterSets[lowercaseLetters] = lowercaseLetters;
-    if (["yes", "1", "y"].includes(useUppercaseLetters)) characterSets[uppercaseLetters] = uppercaseLetters;
-    if (["yes", "1", "y"].includes(useNumbers)) characterSets[numbers] = numbers;
-    if (["yes", "1", "y"].includes(useSpecialCharacters)) characterSets[specialCharacters] = specialCharacters;
-    
-    const keySetCount = Object.keys(characterSets).length;
-    let currentKeyIndex = 0;
-
-    if (keySetCount === 0) alert("Could not generate password because no character set was chosen.");
-
-    for (let i = 0; i < length; i++) {
-        const currentKey = Object.keys(characterSets)[currentKeyIndex];
-        const currentSet = characterSets[currentKey];
-        generatedPassword += currentSet[Math.floor(Math.random() * currentSet.length)];
-        currentKeyIndex = currentKeyIndex === (keySetCount - 1) ? 0 : currentKeyIndex + 1;
+const generatePassword = (password, approvedCharacterSets, characterSetsNotInPassword) => {
+    if (password.length === criteria.length) {
+        return password;
     }
 
-    return generatedPassword;
+    if (characterSetsNotInPassword.length === 0) {
+        const randomCharacterSetIndex = Math.floor(Math.random() * Object.keys(approvedCharacterSets).length);
+        const randomCharacterSetKey = Object.keys(approvedCharacterSets)[randomCharacterSetIndex];
+        const randomCharacterSet = approvedCharacterSets[randomCharacterSetKey];
+        const randomCharacterIndex = Math.floor(Math.random() * randomCharacterSet.length);
+        const randomCharacter = randomCharacterSet[randomCharacterIndex];
+
+        password += randomCharacter;
+    } else {
+        const randomCharacterSetIndex = Math.floor(Math.random() * characterSetsNotInPassword.length);
+        const randomCharacterSetKey = characterSetsNotInPassword[randomCharacterSetIndex];
+        const randomCharacterSet = approvedCharacterSets[randomCharacterSetKey];
+        const randomCharacterIndex = Math.floor(Math.random() * randomCharacterSet.length);
+        const randomCharacter = randomCharacterSet[randomCharacterIndex];
+
+        password += randomCharacter;
+        characterSetsNotInPassword.splice(randomCharacterIndex, 1);
+    }
+
+    return generatePassword(password, approvedCharacterSets, characterSetsNotInPassword);
 };
 
 const writePassword = () => {
-  const criteria = getUserSelectedCriteria();
-  const password = generatePassword(criteria);
-  const passwordText = document.querySelector("#password");
+    const passwordText = document.querySelector("#password");
+    let password;
 
-  passwordText.value = password;
+    criteria.promptUserForPasswordLength(8, 128);
+    criteria.promptUserToApproveEachCharacterSet();
+
+    const approvedCharacterSets = criteria.extractApprovedChracterSets();
+
+    if (Object.keys(approvedCharacterSets).length === 0) {
+        alert("Could not generate password because no character set was chosen.");
+        password = "";
+    } else {
+        password = generatePassword("", approvedCharacterSets, Object.keys(approvedCharacterSets));
+    }
+
+    passwordText.value = password;
 }
 
 generateBtn.addEventListener("click", writePassword);
