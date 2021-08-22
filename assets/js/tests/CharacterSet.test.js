@@ -1,13 +1,19 @@
 import CharacterSet from "../classes/CharacterSet.js";
 
-describe("CharacterSet Class", () => {
+describe("CharacterSet Class constructor", () => {
     let lowercaseLetters;
+    let uppercaseLetters;
 
-    beforeEach(() => {
+    beforeAll(() => {
         lowercaseLetters = new CharacterSet(
             "lowercase letters",
             "abcdefghijklmnopqrstuvwxyz",
             true
+        );
+
+        uppercaseLetters = new CharacterSet(
+            "uppercase letters",
+            lowercaseLetters.characters.toUpperCase()
         );
     });
     
@@ -19,7 +25,11 @@ describe("CharacterSet Class", () => {
         expect(lowercaseLetters.characters).toEqual("abcdefghijklmnopqrstuvwxyz");
     });
     
-    test('cshould set approved from constructor', () => {
+    test('should set approved status from constructor', () => {
         expect(lowercaseLetters.approved).toEqual(true);
+    });
+
+    test('should assign default approved status if no argument was given', () => {
+        expect(uppercaseLetters.approved).toEqual(true);
     });
 });
