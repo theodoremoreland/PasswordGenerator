@@ -8,6 +8,8 @@ describe("Criteria class", () => {
     let lowercaseLetters;
     let uppercaseLetters;
     let criteria;
+    let promptSpy;
+    let alertSpy;
 
     beforeAll(() => {
         lowercaseLetters = new CharacterSet(
@@ -25,6 +27,16 @@ describe("Criteria class", () => {
         criteria = new Criteria(16, [lowercaseLetters, uppercaseLetters]);
     });
 
+    beforeEach(() => {    
+        promptSpy = jest.spyOn(window, "prompt");
+        alertSpy = jest.spyOn(window, "alert").mockImplementation(() => {});
+    });
+
+    afterEach(() => {    
+        promptSpy.mockRestore();
+        alertSpy.mockRestore();
+    });
+
     describe("Criteria class constructor", () => {    
         test("should set length from constructor", () => {
             expect(criteria.length).toEqual(16);
@@ -37,9 +49,9 @@ describe("Criteria class", () => {
         });
     });
 
-    describe("Criteria class prompts", () => {
+    describe("Criteria promptUserForPasswordLength", () => {        
         test("should set length after valid response from user", () => {
-            const promptSpy = jest.spyOn(window, 'prompt').mockReturnValueOnce("19");
+            promptSpy.mockImplementation(() => "19");
 
             criteria.promptUserForPasswordLength();
 
@@ -47,15 +59,44 @@ describe("Criteria class", () => {
             expect(criteria.length).toEqual(19);
         });
 
-        test("should show alert after invalid response from user for password length", () => {
-            const promptSpy = jest.spyOn(window, 'prompt').mockReturnValueOnce("Hi!");
-            const alertSpy = jest.spyOn(window, "alert").mockImplementation(() => {});
+        test("should show alert if user response is not a number", () => {
+            promptSpy
+                .mockReturnValueOnce("This is invalid because it's not a number.")
+                .mockReturnValueOnce("19");
+            
 
             criteria.promptUserForPasswordLength();
 
-            expect(promptSpy).toHaveBeenCalledTimes(1);
+            expect(promptSpy).toHaveBeenCalledTimes(2);
             expect(alertSpy).toHaveBeenCalledTimes(1);
-            expect(criteria.length).toEqual(19);
+        });
+
+        test("should show alert if user response is number below allowed range", () => {
+            promptSpy
+                .mockReturnValueOnce("7")
+                .mockReturnValueOnce("19");
+
+            criteria.promptUserForPasswordLength();
+
+            expect(promptSpy).toHaveBeenCalledTimes(2);
+            expect(alertSpy).toHaveBeenCalledTimes(1);
+        });
+
+        test("should show alert if user response is number above allowed range", () => {
+            promptSpy
+                .mockReturnValueOnce("129")
+                .mockReturnValueOnce("19");
+
+            criteria.promptUserForPasswordLength();
+
+            expect(promptSpy).toHaveBeenCalledTimes(2);
+            expect(alertSpy).toHaveBeenCalledTimes(1);
+        });
+    });
+
+    describe("Criteria promptUserToApproveEachCharacterSet", () => {
+        test("", () => {
+
         });
     });
 });
