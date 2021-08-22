@@ -25,7 +25,7 @@ export default class Criteria {
         return this.promptUserForPasswordLength(minValue, maxValue);
     }
 
-    characterSetPrompt = (characterSet) => {
+    characterSetPrompt(characterSet) {
         const validateResponse = (response) => {
             const regex = /^(yes|y|no|n|1|0)$/i;
             return regex.test(response);
