@@ -7,6 +7,8 @@ import Criteria from "../classes/Criteria";
 describe("Criteria class", () => {
     let lowercaseLetters;
     let uppercaseLetters;
+    let numbers;
+    let specialCharacters;
     let criteria;
     let promptSpy;
     let alertSpy;
@@ -24,7 +26,18 @@ describe("Criteria class", () => {
             false
         );
 
-        criteria = new Criteria(16, [lowercaseLetters, uppercaseLetters]);
+        numbers = new CharacterSet(
+            "numbers",
+            "0123456789",
+            true
+        );
+
+        specialCharacters = new CharacterSet(
+            "special characters",
+            [" ", "!", '"', "#", "$", "%", "&", "'", "(", ")", "*", "+", ",", "-", ".", "/", ":", ";", "<", "=", ">", "?", "@", "[", "\\", "]", "^", "_", "`", "{", "|", "}", "~"],
+        );
+
+        criteria = new Criteria(16, [lowercaseLetters, uppercaseLetters, numbers, specialCharacters]);
     });
 
     beforeEach(() => {    
@@ -43,9 +56,11 @@ describe("Criteria class", () => {
         });
         
         test("should set characterSets from constructor", () => {
-            expect(criteria.characterSets.length).toEqual(2);
+            expect(criteria.characterSets.length).toEqual(4);
             expect(criteria.characterSets[0]).toStrictEqual(lowercaseLetters);
             expect(criteria.characterSets[1]).toStrictEqual(uppercaseLetters);
+            expect(criteria.characterSets[2]).toStrictEqual(numbers);
+            expect(criteria.characterSets[3]).toStrictEqual(specialCharacters);
         });
     });
 
@@ -117,8 +132,86 @@ describe("Criteria class", () => {
     });
 
     describe("Criteria promptUserToApproveEachCharacterSet", () => {
-        test("", () => {
+        test("should call characterSetPrompt for each CharacterSet", () => {
+            promptSpy
+            .mockReturnValueOnce("yes")
+            .mockReturnValueOnce("yes")
+            .mockReturnValueOnce("yes")
+            .mockReturnValueOnce("yes");
 
+            criteria.promptUserToApproveEachCharacterSet();
+
+            expect(promptSpy).toHaveBeenCalledTimes(4);
+        });
+
+        test("should accept all valid approvals", () => {
+            promptSpy
+            .mockReturnValueOnce("YES")
+            .mockReturnValueOnce("yes")
+            .mockReturnValueOnce("y")
+            .mockReturnValueOnce("1");
+
+            criteria.promptUserToApproveEachCharacterSet();
+
+            expect(promptSpy).toHaveBeenCalledTimes(4);
+            expect(alertSpy).toHaveBeenCalledTimes(0);
+        });
+
+        test("should accept all valid disapprovals", () => {
+            promptSpy
+            .mockReturnValueOnce("NO")
+            .mockReturnValueOnce("no")
+            .mockReturnValueOnce("n")
+            .mockReturnValueOnce("0");
+
+            criteria.promptUserToApproveEachCharacterSet();
+
+            expect(promptSpy).toHaveBeenCalledTimes(4);
+            expect(alertSpy).toHaveBeenCalledTimes(0);
+        });
+
+        test("should reassign approval status for each ChracterSet to true when given valid approvals", () => {
+            promptSpy
+            .mockReturnValueOnce("YES")
+            .mockReturnValueOnce("yes")
+            .mockReturnValueOnce("y")
+            .mockReturnValueOnce("1");
+
+            criteria.promptUserToApproveEachCharacterSet();
+
+            for (const characterSet of criteria.characterSets) {
+                expect(characterSet.approved).toEqual(true);
+            }
+        });
+
+        test("should reassign approval status for each ChracterSet to false when given valid disapprovals", () => {
+            promptSpy
+            .mockReturnValueOnce("NO")
+            .mockReturnValueOnce("no")
+            .mockReturnValueOnce("n")
+            .mockReturnValueOnce("0");
+
+            criteria.promptUserToApproveEachCharacterSet();
+
+            for (const characterSet of criteria.characterSets) {
+                expect(characterSet.approved).toEqual(false);
+            }
+        });
+
+        test("should NOT accept INVALID response and INVALID response invokes alert", () => {
+            promptSpy
+            .mockReturnValueOnce("yeet")
+            .mockReturnValueOnce("SHAZAM!")
+            .mockReturnValueOnce("intredasting")
+            .mockReturnValueOnce("yes")
+            .mockReturnValueOnce("yes")
+            .mockReturnValueOnce("yes")
+            .mockReturnValueOnce("yes");
+
+            criteria.promptUserToApproveEachCharacterSet();
+
+            expect(promptSpy).toHaveBeenCalledTimes(7);
+            expect(alertSpy).toHaveBeenCalledTimes(3);
         });
     });
 });
