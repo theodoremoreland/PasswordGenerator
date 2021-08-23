@@ -1,5 +1,6 @@
 import CharacterSet from "./classes/CharacterSet.js";
 import Criteria from "./classes/Criteria.js";
+import { generatePassword } from "./generatePassword.js";
 
 const generateBtn = document.querySelector("#generate");
 const lowercaseLetters = new CharacterSet(
@@ -24,33 +25,6 @@ const specialCharacters = new CharacterSet(
 
 const criteria = new Criteria(16, [lowercaseLetters, uppercaseLetters, numbers, specialCharacters]);
 
-const generatePassword = (password, approvedCharacterSets, characterSetsNotInPassword) => {
-    if (password.length === criteria.length) {
-        return password;
-    }
-
-    if (characterSetsNotInPassword.length === 0) {
-        const randomCharacterSetIndex = Math.floor(Math.random() * Object.keys(approvedCharacterSets).length);
-        const randomCharacterSetKey = Object.keys(approvedCharacterSets)[randomCharacterSetIndex];
-        const randomCharacterSet = approvedCharacterSets[randomCharacterSetKey];
-        const randomCharacterIndex = Math.floor(Math.random() * randomCharacterSet.length);
-        const randomCharacter = randomCharacterSet[randomCharacterIndex];
-
-        password += randomCharacter;
-    } else {
-        const randomCharacterSetIndex = Math.floor(Math.random() * characterSetsNotInPassword.length);
-        const randomCharacterSetKey = characterSetsNotInPassword[randomCharacterSetIndex];
-        const randomCharacterSet = approvedCharacterSets[randomCharacterSetKey];
-        const randomCharacterIndex = Math.floor(Math.random() * randomCharacterSet.length);
-        const randomCharacter = randomCharacterSet[randomCharacterIndex];
-
-        password += randomCharacter;
-        characterSetsNotInPassword.splice(randomCharacterIndex, 1);
-    }
-
-    return generatePassword(password, approvedCharacterSets, characterSetsNotInPassword);
-};
-
 const writePassword = () => {
     const passwordText = document.querySelector("#password");
     let password;
@@ -64,7 +38,7 @@ const writePassword = () => {
         alert("Could not generate password because no character set was chosen.");
         password = "";
     } else {
-        password = generatePassword("", approvedCharacterSets, Object.keys(approvedCharacterSets));
+        password = generatePassword(criteria.length, "", approvedCharacterSets, Object.keys(approvedCharacterSets));
     }
 
     passwordText.value = password;
