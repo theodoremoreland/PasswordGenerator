@@ -53,7 +53,7 @@ describe("Criteria class", () => {
         test("should set length after valid response from user", () => {
             promptSpy.mockImplementation(() => "19");
 
-            criteria.promptUserForPasswordLength();
+            criteria.promptUserForPasswordLength(8, 128);
 
             expect(promptSpy).toHaveBeenCalledTimes(1);
             expect(criteria.length).toEqual(19);
@@ -71,7 +71,7 @@ describe("Criteria class", () => {
             expect(alertSpy).toHaveBeenCalledTimes(1);
         });
 
-        test("should show alert if user response is number below allowed range", () => {
+        test("should show alert if user response is number BELOW DEFAULT range", () => {
             promptSpy
                 .mockReturnValueOnce("7")
                 .mockReturnValueOnce("19");
@@ -82,12 +82,34 @@ describe("Criteria class", () => {
             expect(alertSpy).toHaveBeenCalledTimes(1);
         });
 
-        test("should show alert if user response is number above allowed range", () => {
+        test("should show alert if user response is number ABOVE DEFAULT range", () => {
             promptSpy
                 .mockReturnValueOnce("129")
                 .mockReturnValueOnce("19");
 
             criteria.promptUserForPasswordLength();
+
+            expect(promptSpy).toHaveBeenCalledTimes(2);
+            expect(alertSpy).toHaveBeenCalledTimes(1);
+        });
+
+        test("should show alert if user response is number BELOW CUSTOM range", () => {
+            promptSpy
+                .mockReturnValueOnce("4")
+                .mockReturnValueOnce("19");
+
+            criteria.promptUserForPasswordLength(5, 200);
+
+            expect(promptSpy).toHaveBeenCalledTimes(2);
+            expect(alertSpy).toHaveBeenCalledTimes(1);
+        });
+
+        test("should show alert if user response is number ABOVE CUSTOM range", () => {
+            promptSpy
+                .mockReturnValueOnce("201")
+                .mockReturnValueOnce("19");
+
+            criteria.promptUserForPasswordLength(8, 200);
 
             expect(promptSpy).toHaveBeenCalledTimes(2);
             expect(alertSpy).toHaveBeenCalledTimes(1);
