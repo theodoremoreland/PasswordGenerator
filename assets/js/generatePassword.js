@@ -19,7 +19,7 @@ export const generatePassword = (desiredPasswordLength, password, approvedCharac
         const randomCharacter = randomCharacterSet[randomCharacterIndex];
 
         password += randomCharacter;
-        characterSetsNotInPassword.splice(randomCharacterIndex, 1);
+        characterSetsNotInPassword.splice(randomCharacterSetIndex, 1);
     }
 
     return generatePassword(desiredPasswordLength, password, approvedCharacterSets, characterSetsNotInPassword);
