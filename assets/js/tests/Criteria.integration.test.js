@@ -4,7 +4,7 @@
 import CharacterSet from "../classes/CharacterSet.js";
 import Criteria from "../classes/Criteria";
 
-describe("Criteria class", () => {
+describe("Criteria class integration test suite", () => {
     let lowercaseLetters;
     let uppercaseLetters;
     let numbers;
@@ -212,6 +212,74 @@ describe("Criteria class", () => {
 
             expect(promptSpy).toHaveBeenCalledTimes(7);
             expect(alertSpy).toHaveBeenCalledTimes(3);
+        });
+    });
+
+    describe("Criteria extractApprovedChracterSets", () => {
+        test("should return empty object if no CharacterSet was approved", () => {
+            promptSpy
+                .mockReturnValueOnce("NO")
+                .mockReturnValueOnce("no")
+                .mockReturnValueOnce("n")
+                .mockReturnValueOnce("0");
+
+            criteria.promptUserToApproveEachCharacterSet();
+
+            const approvedCharacterSets = criteria.extractApprovedChracterSets();
+            const approvedCharacterSetsKeys = Object.keys(approvedCharacterSets);
+
+            expect(approvedCharacterSetsKeys.length).toEqual(0);
+        });
+
+        test("should return object with two key/values if two CharacterSets were approved", () => {
+            promptSpy
+                .mockReturnValueOnce("NO")
+                .mockReturnValueOnce("no")
+                .mockReturnValueOnce("y")
+                .mockReturnValueOnce("1");
+
+            criteria.promptUserToApproveEachCharacterSet();
+
+            const approvedCharacterSets = criteria.extractApprovedChracterSets();
+            const approvedCharacterSetsKeys = Object.keys(approvedCharacterSets);
+
+            expect(approvedCharacterSetsKeys.length).toEqual(2);
+        });
+
+        test("should return object with the names of each CharacterSet that was approved", () => {
+            promptSpy
+                .mockReturnValueOnce("YES")
+                .mockReturnValueOnce("yes")
+                .mockReturnValueOnce("y")
+                .mockReturnValueOnce("1");
+
+            criteria.promptUserToApproveEachCharacterSet();
+
+            const approvedCharacterSets = criteria.extractApprovedChracterSets();
+            const approvedCharacterSetsKeys = Object.keys(approvedCharacterSets);
+
+            expect(approvedCharacterSetsKeys[0]).toEqual("lowercase letters");
+            expect(approvedCharacterSetsKeys[1]).toEqual("uppercase letters");
+            expect(approvedCharacterSetsKeys[2]).toEqual("numbers");
+            expect(approvedCharacterSetsKeys[3]).toEqual("special characters");
+        });
+
+        test("should return object values containing the characters of each CharacterSet that was approved", () => {
+            promptSpy
+                .mockReturnValueOnce("YES")
+                .mockReturnValueOnce("yes")
+                .mockReturnValueOnce("y")
+                .mockReturnValueOnce("1");
+
+            criteria.promptUserToApproveEachCharacterSet();
+
+            const approvedCharacterSets = criteria.extractApprovedChracterSets();
+            const approvedCharacterSetsValues = Object.values(approvedCharacterSets);
+
+            expect(approvedCharacterSetsValues[0]).toEqual(lowercaseLetters.characters);
+            expect(approvedCharacterSetsValues[1]).toEqual(uppercaseLetters.characters);
+            expect(approvedCharacterSetsValues[2]).toEqual(numbers.characters);
+            expect(approvedCharacterSetsValues[3]).toEqual(specialCharacters.characters);
         });
     });
 });
