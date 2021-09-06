@@ -1,86 +1,145 @@
+/* ___________________ FONTS ____________________________ */
+
+@font-face {
+    font-family: header;
+    src: url('../fonts/MavenPro-Bold.ttf');
+}
+  
+@font-face {
+    font-family: body;
+    src: url('../fonts/MavenPro-Medium.ttf');
+}
+    
+@font-face {
+    font-family: accent;
+    src: url('../fonts/PressStart2P-Regular.ttf');
+}
+
+/* ------------------- VARIABLES ------------------- */
+
+:root {
+    --header-xxl: 4rem header;
+    --header-xl: 2.8rem header;
+    --header-large: 2.25rem header;
+    --header-medium: 1.85rem header;
+    --header-small: 1.5rem header;
+    --header-xs: 1.2rem header;
+
+    --body-xxl: 1.8rem body;
+    --body-xl: 1.5rem body;
+    --body-large: 1.23rem body;
+    --body-medium: 1rem body;
+    --body-small: 0.9rem body;
+
+    --accent-medium: 1rem accent;
+    --accent-small: 0.8rem accent;
+    
+    --primary-color: #3f00fd;
+    --secondary-color: #190061;
+    --tertiary-color: #0C0032;
+    --quaternary-color: #240090;
+    --quinary-color: #282828;
+}
+
+/* ___________________ GLOABL ____________________________ */
+
 *,
 *::before,
 *::after {
   box-sizing: border-box;
 }
 
-html,
-body,
-.wrapper {
+html, body {
   height: 100%;
+  width: 100%;
   margin: 0;
   padding: 0;
 }
 
 body {
-  font-family: sans-serif;
-  background-color: #f9fbfd;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: body;
+  background-image: url("../images/bg.gif");
+  background-color: var(--primary-color);
+}
+
+#overlay {
+    position: fixed;
+    z-index: -1;
+    height: 100vh;
+    width: 100vw;
+    background-color: #0c0032ea;
 }
 
 .wrapper {
-  padding-top: 30px;
-  padding-left: 20px;
-  padding-right: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    width: 60vw;
+    min-width: 300px;
 }
 
 header {
   text-align: center;
-  padding: 20px;
-  padding-top: 0px;
-  color: hsl(206, 17%, 28%);
+  padding: 5px;
+  color: var(--primary-color);
 }
 
 .card {
-  background-color: hsl(0, 0%, 100%);
+  background-color: rgba(13, 13, 105, 0);
   border-radius: 5px;
   border-width: 1px;
-  box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 8px 0px;
-  color: hsl(206, 17%, 28%);
+  box-shadow: rgba(0, 0, 0, 0) 0px 2px 8px 0px;
+  color: var(--primary-color);
   font-size: 18px;
-  margin: 0 auto;
-  max-width: 800px;
-  padding: 30px 40px;
-}
-
-.card-header::after {
-  content: " ";
-  display: block;
+  height: 100%;
   width: 100%;
-  background: #e7e9eb;
-  height: 2px;
+  max-width: 800px;
 }
 
 .card-body {
   min-height: 100px;
 }
 
+textarea {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    border: none;
+    display: block;
+    height: 100%;
+    width: 100%;
+    padding-top: 15px;
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-bottom: 85px;
+    font-family: accent;
+    font-size: 1rem;
+    text-align: center;
+    border: 2px solid var(--primary-color);
+    border-radius: 6px;
+    background-color: whitesmoke;
+    color: var(--secondary-color);
+    resize: none;
+    overflow: hidden;
+  }
+
 .card-footer {
   text-align: center;
 }
 
-.card-footer::before {
-  content: " ";
-  display: block;
-  width: 100%;
-  background: #e7e9eb;
-  height: 2px;
-}
-
-.card-footer::after {
-  content: " ";
-  display: block;
-  clear: both;
-}
-
 .btn {
-  border: none;
-  background-color: hsl(360, 91%, 36%);
+  background-color: var(--tertiary-color);
   border-radius: 25px;
-  box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 6px 0px rgba(0, 0, 0, 0.2) 0px 1px 1px
-    0px;
-  color: hsl(0, 0%, 100%);
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 6px 0px rgba(0, 0, 0, 0.2) 0px 1px 1px 0px;
+  color: var(--primary-color);
   display: inline-block;
   font-size: 22px;
+  font-family: body;
   line-height: 22px;
   margin: 16px 16px 16px 20px;
   padding: 14px 34px;
@@ -88,34 +147,8 @@ header {
   cursor: pointer;
 }
 
-button[disabled] {
-  cursor: default;
-  background: #c0c7cf;
-}
-
-.float-right {
-  float: right;
-}
-
-#password {
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-  border: none;
-  display: block;
-  width: 100%;
-  padding-top: 15px;
-  padding-left: 15px;
-  padding-right: 15px;
-  padding-bottom: 85px;
-  font-size: 1.2rem;
-  text-align: center;
-  margin-top: 10px;
-  margin-bottom: 10px;
-  border: 2px dashed #c0c7cf;
-  border-radius: 6px;
-  resize: none;
-  overflow: hidden;
+.btn:hover {
+    filter: brightness(1.6);
 }
 
 @media (max-width: 690px) {
