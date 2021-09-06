@@ -37,11 +37,28 @@ export default class Criteria {
     
         if (userResponseIsValid) {
             if (["yes", "y", "1"].includes(userResponse.toLowerCase())) {
-                characterSet.approved = true;
+                try {
+                    const audioElement = document.querySelector("audio#sfx");
+                    audioElement.src ="/assets/sounds/confirm.mp3";
+                    audioElement.play();
+                } catch (e) {
+                    console.error(e.toString());
+                } finally {
+                    characterSet.approved = true;
+                }
             }
             else {
-                characterSet.approved = false;
+                try {
+                    const audioElement = document.querySelector("audio#sfx");
+                    audioElement.src ="/assets/sounds/deny.mp3";
+                    audioElement.play();
+                } catch (e) {
+                    console.error(e.toString());
+                } finally {
+                    characterSet.approved = false;
+                }
             }
+
             return;
         }
         

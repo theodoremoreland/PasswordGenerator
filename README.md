@@ -1,27 +1,14 @@
-# PasswordGenerator
+# Password Generator
+A web application for generating a random password. Users can choose the length and character sets included in the password. 
 
-- WHEN the user clicks the "Generate Password" button, they are presented with a series of prompts for password criteria.
+### Additional features
+* Automated Unit / Integration Tests
+* Responsive w / mobile first design
+* Music
+* Sound effects
 
-- WHEN prompted for password criteria the user can select which criteria to include in the password, including lowercase, uppercase, numeric, and/or special characters.
-
-- WHEN prompted for the length of the password, the user can choose a length between 8-128 characters.
-
-- WHEN asked for character types to include in the password, the user can confirm whether or not to include the given character type. 
-
-- WHEN the user answers each prompt, their input should be validated.
-
-- WHEN all prompts are answered, at least one character type should be selected before generating password.
-
-- WHEN all prompts are answered and at least one character type is selected, a password is generated that matches the selected criteria.
-
-- WHEN the password is generated, the password is either displayed in an alert or written to the page.
-
-
-
-      Should not produce any errors in the console when you inspect it using Chrome DevTools.
-
-      Application user experience is intuitive and easy to navigate.
-
-      Application user interface style is clean and polished.
-
-      Application resembles the mock-up functionality provided in the homework instructions.
+### Technologies Used
+* HTML5
+* CSS3
+* JavaScript
+* Jest

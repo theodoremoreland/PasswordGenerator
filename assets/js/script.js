@@ -3,6 +3,7 @@ import Criteria from "./classes/Criteria.js";
 import { generatePassword } from "./generatePassword.js";
 
 const generateBtn = document.querySelector("#generate");
+const audioElement = document.querySelector("audio#sfx");
 const lowercaseLetters = new CharacterSet(
     "lowercase letters",
     "abcdefghijklmnopqrstuvwxyz",
@@ -24,7 +25,6 @@ const specialCharacters = new CharacterSet(
 );
 
 const criteria = new Criteria(16, [lowercaseLetters, uppercaseLetters, numbers, specialCharacters]);
-const audioElement = document.querySelector("audio");
 
 const writePassword = () => {
     const passwordText = document.querySelector("#password");

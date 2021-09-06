@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-
+    
     <title>Password Generator</title>
 
     <!-- <a href="https://icons8.com/icon/EezKoqfhA0Ns/decision">Decision icon by Icons8</a> -->
@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="/assets/css/style.css" />
 
     <!-- JS -->
+    <script defer src="/assets/js/toggleMusic.js"></script>
     <script type="module" defer src="/assets/js/script.js"></script>
   </head>
   <body>
@@ -36,6 +37,16 @@
         </div>
       </div>
     </div>
-    <audio src="" style="display: none;"></audio>
+    <audio id="sfx"></audio>
+    <audio
+        autoplay
+        id="music"
+        src="/assets/sounds/music.mp3"
+        loop="loop" muted="true" 
+    >
+    </audio>
+    <span id="muteButton">
+        &#128263;
+    </span>
   </body>
 </html>
