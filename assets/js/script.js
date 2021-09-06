@@ -24,6 +24,7 @@ const specialCharacters = new CharacterSet(
 );
 
 const criteria = new Criteria(16, [lowercaseLetters, uppercaseLetters, numbers, specialCharacters]);
+const audioElement = document.querySelector("audio");
 
 const writePassword = () => {
     const passwordText = document.querySelector("#password");
@@ -39,6 +40,8 @@ const writePassword = () => {
         password = "";
     } else {
         password = generatePassword(criteria.length, "", approvedCharacterSets, Object.keys(approvedCharacterSets));
+        audioElement.src = "/assets/sounds/completed.mp3";
+        audioElement.play();
     }
 
     passwordText.value = password;

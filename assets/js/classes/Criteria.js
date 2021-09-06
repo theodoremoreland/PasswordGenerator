@@ -36,8 +36,12 @@ export default class Criteria {
         const userResponseIsValid = validateResponse(userResponse);
     
         if (userResponseIsValid) {
-            if (["yes", "y", "1"].includes(userResponse.toLowerCase())) characterSet.approved = true;
-            else characterSet.approved = false;
+            if (["yes", "y", "1"].includes(userResponse.toLowerCase())) {
+                characterSet.approved = true;
+            }
+            else {
+                characterSet.approved = false;
+            }
             return;
         }
         
