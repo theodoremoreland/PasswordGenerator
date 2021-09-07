@@ -134,10 +134,10 @@ describe("Criteria class integration test suite", () => {
     describe("Criteria promptUserToApproveEachCharacterSet", () => {
         test("should call characterSetPrompt for each CharacterSet", () => {
             promptSpy
-            .mockReturnValueOnce("yes")
-            .mockReturnValueOnce("yes")
-            .mockReturnValueOnce("yes")
-            .mockReturnValueOnce("yes");
+                .mockReturnValueOnce("yes")
+                .mockReturnValueOnce("yes")
+                .mockReturnValueOnce("yes")
+                .mockReturnValueOnce("yes");
 
             criteria.promptUserToApproveEachCharacterSet();
 
@@ -146,10 +146,10 @@ describe("Criteria class integration test suite", () => {
 
         test("should accept all valid approvals", () => {
             promptSpy
-            .mockReturnValueOnce("YES")
-            .mockReturnValueOnce("yes")
-            .mockReturnValueOnce("y")
-            .mockReturnValueOnce("1");
+                .mockReturnValueOnce("YES")
+                .mockReturnValueOnce("yes")
+                .mockReturnValueOnce("y")
+                .mockReturnValueOnce("1");
 
             criteria.promptUserToApproveEachCharacterSet();
 
@@ -159,10 +159,10 @@ describe("Criteria class integration test suite", () => {
 
         test("should accept all valid disapprovals", () => {
             promptSpy
-            .mockReturnValueOnce("NO")
-            .mockReturnValueOnce("no")
-            .mockReturnValueOnce("n")
-            .mockReturnValueOnce("0");
+                .mockReturnValueOnce("NO")
+                .mockReturnValueOnce("no")
+                .mockReturnValueOnce("n")
+                .mockReturnValueOnce("0");
 
             criteria.promptUserToApproveEachCharacterSet();
 
@@ -172,10 +172,10 @@ describe("Criteria class integration test suite", () => {
 
         test("should reassign approval status for each ChracterSet to true when given valid approvals", () => {
             promptSpy
-            .mockReturnValueOnce("YES")
-            .mockReturnValueOnce("yes")
-            .mockReturnValueOnce("y")
-            .mockReturnValueOnce("1");
+                .mockReturnValueOnce("YES")
+                .mockReturnValueOnce("yes")
+                .mockReturnValueOnce("y")
+                .mockReturnValueOnce("1");
 
             criteria.promptUserToApproveEachCharacterSet();
 
@@ -186,10 +186,10 @@ describe("Criteria class integration test suite", () => {
 
         test("should reassign approval status for each ChracterSet to false when given valid disapprovals", () => {
             promptSpy
-            .mockReturnValueOnce("NO")
-            .mockReturnValueOnce("no")
-            .mockReturnValueOnce("n")
-            .mockReturnValueOnce("0");
+                .mockReturnValueOnce("NO")
+                .mockReturnValueOnce("no")
+                .mockReturnValueOnce("n")
+                .mockReturnValueOnce("0");
 
             criteria.promptUserToApproveEachCharacterSet();
 
@@ -200,13 +200,13 @@ describe("Criteria class integration test suite", () => {
 
         test("should NOT accept INVALID response and INVALID response invokes alert", () => {
             promptSpy
-            .mockReturnValueOnce("yeet")
-            .mockReturnValueOnce("SHAZAM!")
-            .mockReturnValueOnce("intredasting")
-            .mockReturnValueOnce("yes")
-            .mockReturnValueOnce("yes")
-            .mockReturnValueOnce("yes")
-            .mockReturnValueOnce("yes");
+                .mockReturnValueOnce("yeet")
+                .mockReturnValueOnce("SHAZAM!")
+                .mockReturnValueOnce("intredasting")
+                .mockReturnValueOnce("yes")
+                .mockReturnValueOnce("yes")
+                .mockReturnValueOnce("yes")
+                .mockReturnValueOnce("yes");
 
             criteria.promptUserToApproveEachCharacterSet();
 
