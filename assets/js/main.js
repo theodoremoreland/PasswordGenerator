@@ -1,6 +1,6 @@
 import CharacterSet from "./classes/CharacterSet.js";
 import Criteria from "./classes/Criteria.js";
-import { generatePassword } from "./generatePassword.js";
+import { generatePassword } from "./scripts/generatePassword.js";
 
 const generateBtn = document.querySelector("#generate");
 const audioElement = document.querySelector("audio#sfx");

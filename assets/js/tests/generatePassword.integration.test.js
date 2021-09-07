@@ -1,7 +1,7 @@
 /**
  * @jest-environment jsdom
  */
-import { generatePassword } from "../generatePassword.js";
+import { generatePassword } from "../scripts/generatePassword.js";
 import CharacterSet from "../classes/CharacterSet.js";
 import Criteria from "../classes/Criteria";
 
