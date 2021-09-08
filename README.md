@@ -2,6 +2,7 @@
 A web application for generating a random password. Users can choose the length and character sets included in the password. Leverages browser's built in alerts and prompts.
 
 ### Additional features
+* Input validation
 * Automated Unit / Integration Tests
 * Responsive w / mobile first design
 * Music
