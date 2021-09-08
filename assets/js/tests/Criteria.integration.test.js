@@ -37,7 +37,7 @@ describe("Criteria class integration test suite", () => {
             [" ", "!", '"', "#", "$", "%", "&", "'", "(", ")", "*", "+", ",", "-", ".", "/", ":", ";", "<", "=", ">", "?", "@", "[", "\\", "]", "^", "_", "`", "{", "|", "}", "~"],
         );
 
-        criteria = new Criteria(16, [lowercaseLetters, uppercaseLetters, numbers, specialCharacters]);
+        criteria = new Criteria([lowercaseLetters, uppercaseLetters, numbers, specialCharacters]);
     });
 
     beforeEach(() => {    
@@ -51,10 +51,6 @@ describe("Criteria class integration test suite", () => {
     });
 
     describe("Criteria class constructor", () => {    
-        test("should set length from constructor", () => {
-            expect(criteria.length).toEqual(16);
-        });
-        
         test("should set characterSets from constructor", () => {
             expect(criteria.characterSets.length).toEqual(4);
             expect(criteria.characterSets[0]).toStrictEqual(lowercaseLetters);

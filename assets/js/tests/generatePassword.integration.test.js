@@ -38,7 +38,7 @@ describe("generatePassword function", () => {
             [" ", "!", '"', "#", "$", "%", "&", "'", "(", ")", "*", "+", ",", "-", ".", "/", ":", ";", "<", "=", ">", "?", "@", "[", "\\", "]", "^", "_", "`", "{", "|", "}", "~"],
         );
 
-        criteria = new Criteria(16, [lowercaseLetters, uppercaseLetters, numbers, specialCharacters]);
+        criteria = new Criteria([lowercaseLetters, uppercaseLetters, numbers, specialCharacters]);
     });
 
     beforeEach(() => {

@@ -24,13 +24,13 @@ const specialCharacters = new CharacterSet(
     [" ", "!", '"', "#", "$", "%", "&", "'", "(", ")", "*", "+", ",", "-", ".", "/", ":", ";", "<", "=", ">", "?", "@", "[", "\\", "]", "^", "_", "`", "{", "|", "}", "~"],
 );
 
-const criteria = new Criteria(16, [lowercaseLetters, uppercaseLetters, numbers, specialCharacters]);
+const criteria = new Criteria([lowercaseLetters, uppercaseLetters, numbers, specialCharacters]);
 
 const writePassword = () => {
     const passwordText = document.querySelector("#password");
     let password;
 
-    criteria.promptUserForPasswordLength(8, 128);
+    criteria.promptUserForPasswordLength(8, 128, 16);
     criteria.promptUserToApproveEachCharacterSet();
 
     const approvedCharacterSets = criteria.extractApprovedChracterSets();
