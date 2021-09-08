@@ -37,7 +37,7 @@ export default class Criteria {
         if (userResponseIsValid) {
             if (["yes", "y", "1"].includes(userResponse.toLowerCase())) {
                 if (audioElement) {
-                    audioElement.src ="/assets/sounds/confirm.mp3";
+                    audioElement.src ="assets/sounds/confirm.mp3";
 
                     audioElement
                         .play()
@@ -52,7 +52,7 @@ export default class Criteria {
             }
             else {
                 if (audioElement) {
-                    audioElement.src ="/assets/sounds/deny.mp3";
+                    audioElement.src ="assets/sounds/deny.mp3";
                     audioElement
                         .play()
                         .catch(e => {

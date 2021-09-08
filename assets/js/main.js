@@ -40,7 +40,7 @@ const writePassword = () => {
         password = "";
     } else {
         password = generatePassword(criteria.length, "", approvedCharacterSets, Object.keys(approvedCharacterSets));
-        audioElement.src = "/assets/sounds/completed.mp3";
+        audioElement.src = "assets/sounds/completed.mp3";
         audioElement.play();
     }
 
