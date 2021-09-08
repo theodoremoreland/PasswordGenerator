@@ -138,7 +138,7 @@ textarea {
   box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 6px 0px rgba(0, 0, 0, 0.2) 0px 1px 1px 0px;
   color: var(--primary-color);
   display: inline-block;
-  font-size: 22px;
+  font-size: 1rem;
   font-family: body;
   line-height: 22px;
   margin: 16px 16px 16px 20px;
@@ -153,26 +153,21 @@ textarea {
 
 #muteButton {
     position: fixed;
-    left: 20px;
-    bottom: 25px;
+    left: 10px;
+    bottom: 35px;
     opacity: 0.5;
     font-size: 2.5rem;
 }
 
-@media (max-width: 690px) {
-  .btn {
-    font-size: 1rem;
-    margin: 16px 0px 0px 0px;
-    padding: 10px 15px;
-  }
-
-  #password {
-    font-size: 1rem;
-  }
+@media screen and (min-width: 360px) {
+    #muteButton {
+        left: 20px;
+        bottom: 25px;
+    }
 }
 
-@media (max-width: 500px) {
-  .btn {
-    font-size: 0.8rem;
-  }
+@media screen and (min-width: 1920px) {
+    .btn {
+        font-size: 1.2rem;
+    }
 }
