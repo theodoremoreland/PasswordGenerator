@@ -59,7 +59,7 @@ html, body {
 body {
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
   font-family: body;
   background-image: url("../images/bg.gif");
   background-color: var(--primary-color);
@@ -164,6 +164,12 @@ textarea {
         left: 20px;
         bottom: 25px;
     }
+}
+
+@media screen and (min-width: 768px) {
+    body {
+        align-items: center;
+      }
 }
 
 @media screen and (min-width: 1920px) {
