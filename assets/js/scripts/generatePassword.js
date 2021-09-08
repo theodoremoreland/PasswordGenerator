@@ -3,23 +3,26 @@ export const generatePassword = (desiredPasswordLength, password, approvedCharac
         return password;
     }
 
-    if (characterSetsNotInPassword.length === 0) {
-        const randomCharacterSetIndex = Math.floor(Math.random() * Object.keys(approvedCharacterSets).length);
-        const randomCharacterSetKey = Object.keys(approvedCharacterSets)[randomCharacterSetIndex];
+    const generateRandomCharacter = (characterSetKeys) => {
+        const randomCharacterSetKeyIndex = Math.floor(Math.random() * characterSetKeys.length);
+        const randomCharacterSetKey = characterSetKeys[randomCharacterSetKeyIndex];
         const randomCharacterSet = approvedCharacterSets[randomCharacterSetKey];
         const randomCharacterIndex = Math.floor(Math.random() * randomCharacterSet.length);
         const randomCharacter = randomCharacterSet[randomCharacterIndex];
+
+        return randomCharacter;
+    }
+
+    if (characterSetsNotInPassword.length === 0) {
+        const characterSetKeys = Object.keys(approvedCharacterSets);
+        const randomCharacter = generateRandomCharacter(characterSetKeys);
 
         password += randomCharacter;
     } else {
-        const randomCharacterSetIndex = Math.floor(Math.random() * characterSetsNotInPassword.length);
-        const randomCharacterSetKey = characterSetsNotInPassword[randomCharacterSetIndex];
-        const randomCharacterSet = approvedCharacterSets[randomCharacterSetKey];
-        const randomCharacterIndex = Math.floor(Math.random() * randomCharacterSet.length);
-        const randomCharacter = randomCharacterSet[randomCharacterIndex];
+        const randomCharacter = generateRandomCharacter(characterSetsNotInPassword);
 
         password += randomCharacter;
-        characterSetsNotInPassword.splice(randomCharacterSetIndex, 1);
+        characterSetsNotInPassword.splice(characterSetsNotInPassword.indexOf(randomCharacter), 1);
     }
 
     return generatePassword(desiredPasswordLength, password, approvedCharacterSets, characterSetsNotInPassword);
