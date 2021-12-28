@@ -1,29 +1,45 @@
-export const generatePassword = (desiredPasswordLength, password, approvedCharacterSets, characterSetsNotInPassword) => {
-    if (password.length === desiredPasswordLength) {
-        return password;
+export const selectRandomCharacterSet = (characterSets) => {
+    const keys = Object.keys(characterSets);
+    const randomKeyIndex = Math.floor(Math.random() * (keys.length - 1));
+    const randomKey = keys[randomKeyIndex];
+    const randomCharacterSet = characterSets[randomKey];
+
+    return randomCharacterSet;
+}
+
+export const selectRandomCharacter = (characterSet) => {
+    const randomIndex = Math.floor(Math.random() * (characterSet.length - 1));
+    const randomCharacter = characterSet[randomIndex];
+
+    return randomCharacter;
+}
+
+export const scramblePassword = (password) => {
+    let scrambledPassword = "";
+    const characterArray = password.split("");
+
+    while (characterArray.length > 0) {
+        const randomIndex = Math.floor(Math.random() * (characterArray.length - 1));
+        const randomCharacter = characterArray.splice(randomIndex, 1);
+        
+        scrambledPassword += randomCharacter;
     }
 
-    const generateRandomCharacter = (characterSetKeys) => {
-        const randomCharacterSetKeyIndex = Math.floor(Math.random() * characterSetKeys.length);
-        const randomCharacterSetKey = characterSetKeys[randomCharacterSetKeyIndex];
-        const randomCharacterSet = approvedCharacterSets[randomCharacterSetKey];
-        const randomCharacterIndex = Math.floor(Math.random() * randomCharacterSet.length);
-        const randomCharacter = randomCharacterSet[randomCharacterIndex];
+    return scrambledPassword;
+}
 
-        return randomCharacter;
+export const generatePassword = (desiredPasswordLength, password, characterSets) => {
+    for (const key of Object.keys(characterSets)) {
+        const randomCharacter = selectRandomCharacter(characterSets[key]);
+        password += randomCharacter;
     }
 
-    if (characterSetsNotInPassword.length === 0) {
-        const characterSetKeys = Object.keys(approvedCharacterSets);
-        const randomCharacter = generateRandomCharacter(characterSetKeys);
+    while (password.length < desiredPasswordLength) {
+        const randomCharacterSet = selectRandomCharacterSet(characterSets);
+        const randomCharacter = selectRandomCharacter(randomCharacterSet);
 
         password += randomCharacter;
-    } else {
-        const randomCharacter = generateRandomCharacter(characterSetsNotInPassword);
-
-        password += randomCharacter;
-        characterSetsNotInPassword.splice(characterSetsNotInPassword.indexOf(randomCharacter), 1);
     }
 
-    return generatePassword(desiredPasswordLength, password, approvedCharacterSets, characterSetsNotInPassword);
+    return scramblePassword(password);
 };

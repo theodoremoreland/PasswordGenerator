@@ -39,7 +39,7 @@ const writePassword = () => {
         alert("Could not generate password because no character set was chosen.");
         password = "";
     } else {
-        password = generatePassword(criteria.length, "", approvedCharacterSets, Object.keys(approvedCharacterSets));
+        password = generatePassword(criteria.length, "", approvedCharacterSets);
         audioElement.src = "assets/sounds/completed.mp3";
         audioElement.play();
     }
