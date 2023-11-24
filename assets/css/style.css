@@ -136,7 +136,7 @@ textarea {
   background-color: var(--tertiary-color);
   border-radius: 25px;
   box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 6px 0px rgba(0, 0, 0, 0.2) 0px 1px 1px 0px;
-  color: var(--primary-color);
+  color: whitesmoke;
   display: inline-block;
   font-size: 1rem;
   font-family: body;
@@ -145,6 +145,7 @@ textarea {
   padding: 14px 34px;
   text-align: center;
   cursor: pointer;
+  border: solid 1px var(--primary-color)
 }
 
 .btn:hover {
@@ -157,6 +158,7 @@ textarea {
     bottom: 35px;
     opacity: 0.5;
     font-size: 2.5rem;
+    cursor: pointer;
 }
 
 @media screen and (min-width: 360px) {
