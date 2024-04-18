@@ -66,6 +66,12 @@ body {
   background-color: var(--primary-color);
 }
 
+@media screen and (min-width: 768px) {
+  body {
+    align-items: center;
+  }
+}
+
 #overlay {
   position: fixed;
   z-index: -1;
@@ -150,6 +156,12 @@ textarea {
   border: solid 1px var(--primary-color);
 }
 
+@media screen and (min-width: 1920px) {
+  .btn {
+    font-size: 1.2rem;
+  }
+}
+
 .btn:hover {
   filter: brightness(1.6);
 }
@@ -170,14 +182,18 @@ textarea {
   }
 }
 
-@media screen and (min-width: 768px) {
-  body {
-    align-items: center;
-  }
+#password {
+  cursor: not-allowed;
 }
 
-@media screen and (min-width: 1920px) {
-  .btn {
-    font-size: 1.2rem;
-  }
+#password.copy-to-clipboard {
+  cursor: pointer;
+}
+
+#password.copy-to-clipboard:hover {
+  filter: brightness(1.2);
+}
+
+#password.copy-to-clipboard:active {
+  filter: brightness(1.4);
 }

@@ -1,9 +1,11 @@
 import CharacterSet from "./classes/CharacterSet.js";
 import Criteria from "./classes/Criteria.js";
 import { generatePassword } from "./scripts/generatePassword.js";
+import copyToClipboard from "./scripts/copyToClipboard.js";
 
 const generateBtn = document.querySelector("#generate");
 const audioElement = document.querySelector("audio#sfx");
+const passwordText = document.querySelector("#password");
 const lowercaseLetters = new CharacterSet(
   "lowercase letters",
   "abcdefghijklmnopqrstuvwxyz",
@@ -77,6 +79,8 @@ const writePassword = () => {
   }
 
   passwordText.value = password;
+  passwordText.classList.add("copy-to-clipboard");
 };
 
 generateBtn.addEventListener("click", writePassword);
+passwordText.addEventListener("click", copyToClipboard);
