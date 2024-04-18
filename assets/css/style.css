@@ -1,47 +1,47 @@
 /* ___________________ FONTS ____________________________ */
 
 @font-face {
-    font-family: header;
-    src: url('../fonts/MavenPro-Bold.ttf');
+  font-family: header;
+  src: url("../fonts/MavenPro-Bold.ttf");
 }
-  
+
 @font-face {
-    font-family: body;
-    src: url('../fonts/MavenPro-Medium.ttf');
+  font-family: body;
+  src: url("../fonts/MavenPro-Medium.ttf");
 }
-    
+
 @font-face {
-    font-family: accent;
-    src: url('../fonts/PressStart2P-Regular.ttf');
+  font-family: accent;
+  src: url("../fonts/PressStart2P-Regular.ttf");
 }
 
 /* ------------------- VARIABLES ------------------- */
 
 :root {
-    --header-xxl: 4rem header;
-    --header-xl: 2.8rem header;
-    --header-large: 2.25rem header;
-    --header-medium: 1.85rem header;
-    --header-small: 1.5rem header;
-    --header-xs: 1.2rem header;
+  --header-xxl: 4rem header;
+  --header-xl: 2.8rem header;
+  --header-large: 2.25rem header;
+  --header-medium: 1.85rem header;
+  --header-small: 1.5rem header;
+  --header-xs: 1.2rem header;
 
-    --body-xxl: 1.8rem body;
-    --body-xl: 1.5rem body;
-    --body-large: 1.23rem body;
-    --body-medium: 1rem body;
-    --body-small: 0.9rem body;
+  --body-xxl: 1.8rem body;
+  --body-xl: 1.5rem body;
+  --body-large: 1.23rem body;
+  --body-medium: 1rem body;
+  --body-small: 0.9rem body;
 
-    --accent-medium: 1rem accent;
-    --accent-small: 0.8rem accent;
-    
-    --primary-color: #3f00fd;
-    --secondary-color: #190061;
-    --tertiary-color: #0C0032;
-    --quaternary-color: #240090;
-    --quinary-color: #282828;
+  --accent-medium: 1rem accent;
+  --accent-small: 0.8rem accent;
+
+  --primary-color: #3f00fd;
+  --secondary-color: #190061;
+  --tertiary-color: #0c0032;
+  --quaternary-color: #240090;
+  --quinary-color: #282828;
 }
 
-/* ___________________ GLOABL ____________________________ */
+/* ___________________ GLOBAL ____________________________ */
 
 *,
 *::before,
@@ -49,7 +49,8 @@
   box-sizing: border-box;
 }
 
-html, body {
+html,
+body {
   height: 100%;
   width: 100%;
   margin: 0;
@@ -66,21 +67,21 @@ body {
 }
 
 #overlay {
-    position: fixed;
-    z-index: -1;
-    height: 100vh;
-    width: 100vw;
-    background-color: #0c0032ea;
+  position: fixed;
+  z-index: -1;
+  height: 100vh;
+  width: 100vw;
+  background-color: #0c0032ea;
 }
 
 .wrapper {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding: 20px;
-    width: 60vw;
-    min-width: 300px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  width: 60vw;
+  min-width: 300px;
 }
 
 header {
@@ -106,27 +107,27 @@ header {
 }
 
 textarea {
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none;
-    border: none;
-    display: block;
-    height: 100%;
-    width: 100%;
-    padding-top: 15px;
-    padding-left: 15px;
-    padding-right: 15px;
-    padding-bottom: 85px;
-    font-family: accent;
-    font-size: 1rem;
-    text-align: center;
-    border: 2px solid var(--primary-color);
-    border-radius: 6px;
-    background-color: whitesmoke;
-    color: var(--secondary-color);
-    resize: none;
-    overflow: hidden;
-  }
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  border: none;
+  display: block;
+  height: 100%;
+  width: 100%;
+  padding-top: 15px;
+  padding-left: 15px;
+  padding-right: 15px;
+  padding-bottom: 85px;
+  font-family: accent;
+  font-size: 1rem;
+  text-align: center;
+  border: 2px solid var(--primary-color);
+  border-radius: 6px;
+  background-color: whitesmoke;
+  color: var(--secondary-color);
+  resize: none;
+  overflow: hidden;
+}
 
 .card-footer {
   text-align: center;
@@ -135,7 +136,8 @@ textarea {
 .btn {
   background-color: var(--tertiary-color);
   border-radius: 25px;
-  box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 6px 0px rgba(0, 0, 0, 0.2) 0px 1px 1px 0px;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 6px 0px rgba(0, 0, 0, 0.2) 0px 1px 1px
+    0px;
   color: whitesmoke;
   display: inline-block;
   font-size: 1rem;
@@ -145,37 +147,37 @@ textarea {
   padding: 14px 34px;
   text-align: center;
   cursor: pointer;
-  border: solid 1px var(--primary-color)
+  border: solid 1px var(--primary-color);
 }
 
 .btn:hover {
-    filter: brightness(1.6);
+  filter: brightness(1.6);
 }
 
 #muteButton {
-    position: fixed;
-    left: 10px;
-    bottom: 35px;
-    opacity: 0.5;
-    font-size: 2.5rem;
-    cursor: pointer;
+  position: fixed;
+  left: 10px;
+  bottom: 35px;
+  opacity: 0.5;
+  font-size: 2.5rem;
+  cursor: pointer;
 }
 
 @media screen and (min-width: 360px) {
-    #muteButton {
-        left: 20px;
-        bottom: 25px;
-    }
+  #muteButton {
+    left: 20px;
+    bottom: 25px;
+  }
 }
 
 @media screen and (min-width: 768px) {
-    body {
-        align-items: center;
-      }
+  body {
+    align-items: center;
+  }
 }
 
 @media screen and (min-width: 1920px) {
-    .btn {
-        font-size: 1.2rem;
-    }
+  .btn {
+    font-size: 1.2rem;
+  }
 }

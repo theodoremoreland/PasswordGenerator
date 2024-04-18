@@ -91,7 +91,7 @@ describe("generatePassword function", () => {
       .mockReturnValueOnce("no");
 
     criteria.promptUserToApproveEachCharacterSet();
-    const approvedCharacterSets = criteria.extractApprovedChracterSets();
+    const approvedCharacterSets = criteria.extractApprovedCharacterSets();
     const approvedCharacterSetsKeys = Object.keys(approvedCharacterSets);
 
     const password = generatePassword(
@@ -111,7 +111,7 @@ describe("generatePassword function", () => {
       .mockReturnValueOnce("no");
 
     criteria.promptUserToApproveEachCharacterSet();
-    const approvedCharacterSets = criteria.extractApprovedChracterSets();
+    const approvedCharacterSets = criteria.extractApprovedCharacterSets();
     const approvedCharacterSetsKeys = Object.keys(approvedCharacterSets);
 
     const password = generatePassword(
@@ -136,7 +136,7 @@ describe("generatePassword function", () => {
       .mockReturnValueOnce("no");
 
     criteria.promptUserToApproveEachCharacterSet();
-    const approvedCharacterSets = criteria.extractApprovedChracterSets();
+    const approvedCharacterSets = criteria.extractApprovedCharacterSets();
     const approvedCharacterSetsKeys = Object.keys(approvedCharacterSets);
 
     const password = generatePassword(
@@ -161,7 +161,7 @@ describe("generatePassword function", () => {
       .mockReturnValueOnce("no");
 
     criteria.promptUserToApproveEachCharacterSet();
-    const approvedCharacterSets = criteria.extractApprovedChracterSets();
+    const approvedCharacterSets = criteria.extractApprovedCharacterSets();
     const approvedCharacterSetsKeys = Object.keys(approvedCharacterSets);
 
     const password = generatePassword(
@@ -186,7 +186,7 @@ describe("generatePassword function", () => {
       .mockReturnValueOnce("yes");
 
     criteria.promptUserToApproveEachCharacterSet();
-    const approvedCharacterSets = criteria.extractApprovedChracterSets();
+    const approvedCharacterSets = criteria.extractApprovedCharacterSets();
     const approvedCharacterSetsKeys = Object.keys(approvedCharacterSets);
 
     const password = generatePassword(
@@ -212,7 +212,7 @@ describe("generatePassword function", () => {
       .mockReturnValueOnce("no");
 
     criteria.promptUserToApproveEachCharacterSet();
-    const approvedCharacterSets = criteria.extractApprovedChracterSets();
+    const approvedCharacterSets = criteria.extractApprovedCharacterSets();
     const approvedCharacterSetsKeys = Object.keys(approvedCharacterSets);
 
     const password = generatePassword(
@@ -252,7 +252,7 @@ describe("generatePassword function", () => {
       .mockReturnValueOnce("no");
 
     criteria.promptUserToApproveEachCharacterSet();
-    const approvedCharacterSets = criteria.extractApprovedChracterSets();
+    const approvedCharacterSets = criteria.extractApprovedCharacterSets();
     const approvedCharacterSetsKeys = Object.keys(approvedCharacterSets);
 
     const password = generatePassword(
@@ -296,7 +296,7 @@ describe("generatePassword function", () => {
       .mockReturnValueOnce("yes");
 
     criteria.promptUserToApproveEachCharacterSet();
-    const approvedCharacterSets = criteria.extractApprovedChracterSets();
+    const approvedCharacterSets = criteria.extractApprovedCharacterSets();
     const approvedCharacterSetsKeys = Object.keys(approvedCharacterSets);
 
     const password = generatePassword(

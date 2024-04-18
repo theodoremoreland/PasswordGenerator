@@ -82,7 +82,7 @@ export default class Criteria {
     }
   }
 
-  extractApprovedChracterSets() {
+  extractApprovedCharacterSets() {
     const approvedCharacterSets = {};
 
     for (const characterSet of this.characterSets) {

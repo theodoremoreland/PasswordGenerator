@@ -189,7 +189,7 @@ describe("Criteria class integration test suite", () => {
       expect(alertSpy).toHaveBeenCalledTimes(0);
     });
 
-    test("should reassign approval status for each ChracterSet to true when given valid approvals", () => {
+    test("should reassign approval status for each CharacterSet to true when given valid approvals", () => {
       promptSpy
         .mockReturnValueOnce("YES")
         .mockReturnValueOnce("yes")
@@ -203,7 +203,7 @@ describe("Criteria class integration test suite", () => {
       }
     });
 
-    test("should reassign approval status for each ChracterSet to false when given valid disapprovals", () => {
+    test("should reassign approval status for each CharacterSet to false when given valid disapprovals", () => {
       promptSpy
         .mockReturnValueOnce("NO")
         .mockReturnValueOnce("no")
@@ -234,7 +234,7 @@ describe("Criteria class integration test suite", () => {
     });
   });
 
-  describe("Criteria extractApprovedChracterSets", () => {
+  describe("Criteria extractApprovedCharacterSets", () => {
     test("should return empty object if no CharacterSet was approved", () => {
       promptSpy
         .mockReturnValueOnce("NO")
@@ -244,7 +244,7 @@ describe("Criteria class integration test suite", () => {
 
       criteria.promptUserToApproveEachCharacterSet();
 
-      const approvedCharacterSets = criteria.extractApprovedChracterSets();
+      const approvedCharacterSets = criteria.extractApprovedCharacterSets();
       const approvedCharacterSetsKeys = Object.keys(approvedCharacterSets);
 
       expect(approvedCharacterSetsKeys.length).toEqual(0);
@@ -259,7 +259,7 @@ describe("Criteria class integration test suite", () => {
 
       criteria.promptUserToApproveEachCharacterSet();
 
-      const approvedCharacterSets = criteria.extractApprovedChracterSets();
+      const approvedCharacterSets = criteria.extractApprovedCharacterSets();
       const approvedCharacterSetsKeys = Object.keys(approvedCharacterSets);
 
       expect(approvedCharacterSetsKeys.length).toEqual(2);
@@ -274,7 +274,7 @@ describe("Criteria class integration test suite", () => {
 
       criteria.promptUserToApproveEachCharacterSet();
 
-      const approvedCharacterSets = criteria.extractApprovedChracterSets();
+      const approvedCharacterSets = criteria.extractApprovedCharacterSets();
       const approvedCharacterSetsKeys = Object.keys(approvedCharacterSets);
 
       expect(approvedCharacterSetsKeys[0]).toEqual("lowercase letters");
@@ -292,7 +292,7 @@ describe("Criteria class integration test suite", () => {
 
       criteria.promptUserToApproveEachCharacterSet();
 
-      const approvedCharacterSets = criteria.extractApprovedChracterSets();
+      const approvedCharacterSets = criteria.extractApprovedCharacterSets();
       const approvedCharacterSetsValues = Object.values(approvedCharacterSets);
 
       expect(approvedCharacterSetsValues[0]).toEqual(

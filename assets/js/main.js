@@ -65,7 +65,7 @@ const writePassword = () => {
   criteria.promptUserForPasswordLength(8, 128, 16);
   criteria.promptUserToApproveEachCharacterSet();
 
-  const approvedCharacterSets = criteria.extractApprovedChracterSets();
+  const approvedCharacterSets = criteria.extractApprovedCharacterSets();
 
   if (Object.keys(approvedCharacterSets).length === 0) {
     alert("Could not generate password because no character set was chosen.");
