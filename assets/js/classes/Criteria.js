@@ -1,93 +1,96 @@
 export default class Criteria {
-    constructor(characterSets) {
-        this.characterSets = characterSets;
+  constructor(characterSets) {
+    this.characterSets = characterSets;
+  }
+
+  promptUserForPasswordLength(minValue = 8, maxValue = 128, defaultValue) {
+    const validateResponse = (response) => {
+      if (isNaN(response)) return false;
+      else return response >= minValue && response <= maxValue;
+    };
+
+    const promptText =
+      `Choose password length (must be between ${minValue}-${maxValue})` +
+      (defaultValue ? `\nDefault value = ${defaultValue}` : "");
+    const userResponse = prompt(promptText, defaultValue).trim();
+    const userResponseIsValid = validateResponse(userResponse);
+
+    if (userResponseIsValid) {
+      this.length = +userResponse;
+      return;
     }
 
-    promptUserForPasswordLength(minValue = 8, maxValue = 128, defaultValue) {
-        const validateResponse = (response) => {
-            if (isNaN(response)) return false;
-            else return (response >= minValue && response <= maxValue);
-        };
+    alert(
+      `Invalid response: "${userResponse}". Password length must be between ${minValue} and ${maxValue}`
+    );
 
-        const promptText = `Choose password length (must be between ${minValue}-${maxValue})` + (defaultValue ? `\nDefault value = ${defaultValue}` : "");
-        const userResponse = prompt(promptText, defaultValue).trim();
-        const userResponseIsValid = validateResponse(userResponse);
+    return this.promptUserForPasswordLength(minValue, maxValue, defaultValue);
+  }
 
-        if (userResponseIsValid) {
-            this.length = +userResponse;
-            return;
+  characterSetPrompt(characterSet) {
+    const validateResponse = (response) => {
+      const regex = /^(yes|y|no|n|1|0)$/i;
+      return regex.test(response);
+    };
+    const audioElement = document.querySelector("audio#sfx");
+    const defaultValue = characterSet.approved ? "yes" : "no";
+    const promptText =
+      `Include ${characterSet.name} (yes/no)?` +
+      (defaultValue ? `\nDefault value = ${defaultValue}` : "");
+    const userResponse = prompt(promptText, defaultValue).trim();
+    const userResponseIsValid = validateResponse(userResponse);
+
+    if (userResponseIsValid) {
+      if (["yes", "y", "1"].includes(userResponse.toLowerCase())) {
+        if (audioElement) {
+          audioElement.src = "assets/sounds/confirm.mp3";
+
+          audioElement.play().catch((e) => {
+            // AbortError occurs when one sound interrupts another via .play() on the same audio element
+            // This is expected and intentional, so this will suppress the error.
+            if (e.name !== "AbortError") console.error(e);
+          });
         }
 
-        alert(`Invalid response: "${userResponse}". Password length must be between ${minValue} and ${maxValue}`);
+        characterSet.approved = true;
+      } else {
+        if (audioElement) {
+          audioElement.src = "assets/sounds/deny.mp3";
+          audioElement.play().catch((e) => {
+            // AbortError occurs when one sound interrupts another via .play() on the same audio element
+            // This is expected and intentional, so this will suppress the error.
+            if (e.name !== "AbortError") console.error(e);
+          });
+        }
 
-        return this.promptUserForPasswordLength(minValue, maxValue, defaultValue);
+        characterSet.approved = false;
+      }
+
+      return;
     }
 
-    characterSetPrompt(characterSet) {
-        const validateResponse = (response) => {
-            const regex = /^(yes|y|no|n|1|0)$/i;
-            return regex.test(response);
-        }
-        const audioElement = document.querySelector("audio#sfx");
-        const defaultValue = characterSet.approved ? "yes" : "no";
-        const promptText = `Include ${characterSet.name} (yes/no)?` + (defaultValue ? `\nDefault value = ${defaultValue}` : "");
-        const userResponse = prompt(promptText, defaultValue).trim();
-        const userResponseIsValid = validateResponse(userResponse);
-    
-        if (userResponseIsValid) {
-            if (["yes", "y", "1"].includes(userResponse.toLowerCase())) {
-                if (audioElement) {
-                    audioElement.src ="assets/sounds/confirm.mp3";
+    alert(
+      `Invalid response "${userResponse}". Response must be a "yes" or "no".`
+    );
 
-                    audioElement
-                        .play()
-                        .catch(e => {
-                            // AbortError occurs when one sound interrupts another via .play() on the same audio element
-                            // This is expected and intentional, so this will suppress the error.
-                            if (e.name !== "AbortError") console.error(e);
-                        });
-                }
+    return this.characterSetPrompt(characterSet);
+  }
 
-                characterSet.approved = true;
-            }
-            else {
-                if (audioElement) {
-                    audioElement.src ="assets/sounds/deny.mp3";
-                    audioElement
-                        .play()
-                        .catch(e => {
-                            // AbortError occurs when one sound interrupts another via .play() on the same audio element
-                            // This is expected and intentional, so this will suppress the error.
-                            if (e.name !== "AbortError") console.error(e);
-                        });
-                }
+  promptUserToApproveEachCharacterSet() {
+    for (const characterSet of this.characterSets) {
+      this.characterSetPrompt(characterSet);
+    }
+  }
 
-                characterSet.approved = false;
-            }
+  extractApprovedChracterSets() {
+    const approvedCharacterSets = {};
 
-            return;
-        }
-        
-        alert(`Invalid response "${userResponse}". Response must be a "yes" or "no".`);
-        
-        return this.characterSetPrompt(characterSet);
+    for (const characterSet of this.characterSets) {
+      if (characterSet.approved) {
+        approvedCharacterSets[characterSet.name] = characterSet.characters;
+      }
     }
 
-    promptUserToApproveEachCharacterSet() {
-        for (const characterSet of this.characterSets) {
-            this.characterSetPrompt(characterSet);
-        }
-    }
-
-    extractApprovedChracterSets() {
-        const approvedCharacterSets = {};
-
-        for (const characterSet of this.characterSets) {
-            if (characterSet.approved) {
-                approvedCharacterSets[characterSet.name] = characterSet.characters;
-            }
-        }
-
-        return approvedCharacterSets;
-    }
+    return approvedCharacterSets;
+  }
 }
