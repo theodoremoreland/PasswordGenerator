@@ -1,7 +1,7 @@
 import CharacterSet from "./classes/CharacterSet.js";
 import Criteria from "./classes/Criteria.js";
-import { generatePassword } from "./scripts/generatePassword.js";
-import copyToClipboard from "./scripts/copyToClipboard.js";
+import { generatePassword } from "./modules/generatePassword.js";
+import copyToClipboard from "./modules/copyToClipboard.js";
 
 const generateBtn = document.querySelector("#generate");
 const audioElement = document.querySelector("audio#sfx");

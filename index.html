@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
+
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    
+
     <title>Password Generator</title>
 
     <!-- <a href="https://icons8.com/icon/EezKoqfhA0Ns/decision">Decision icon by Icons8</a> -->
@@ -14,9 +15,10 @@
     <link rel="stylesheet" href="assets/css/style.css" />
 
     <!-- JS -->
-    <script defer src="assets/js/scripts/toggleMusic.js"></script>
+    <script defer src="assets/js/modules/toggleMusic.js"></script>
     <script type="module" defer src="assets/js/main.js"></script>
   </head>
+
   <body>
     <div id="overlay"></div>
     <div class="wrapper">
@@ -25,12 +27,8 @@
       </header>
       <div class="card">
         <div class="card-body">
-          <textarea
-            readonly
-            id="password"
-            placeholder="Your Secure Password"
-            aria-label="Generated Password"
-          ></textarea>
+          <textarea readonly id="password" placeholder="Your Secure Password"
+            aria-label="Generated Password"></textarea>
         </div>
         <div class="card-footer">
           <button id="generate" class="btn">Generate Password</button>
@@ -38,15 +36,11 @@
       </div>
     </div>
     <audio id="sfx"></audio>
-    <audio
-        autoplay
-        id="music"
-        src="assets/sounds/music.mp3"
-        loop="loop" muted="true" 
-    >
+    <audio autoplay id="music" src="assets/sounds/music.mp3" loop="loop" muted="true">
     </audio>
     <span id="muteButton">
-        &#128263;
+      &#128263;
     </span>
   </body>
+
 </html>
