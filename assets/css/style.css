@@ -187,7 +187,7 @@ textarea {
 }
 
 #password.copy-to-clipboard {
-  cursor: pointer;
+  cursor: copy;
 }
 
 #password.copy-to-clipboard:hover {
