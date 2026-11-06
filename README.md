@@ -6,7 +6,7 @@ A web application for generating a random password. Users can choose the length 
 
 Visit here: https://theodoremoreland.github.io/PasswordGenerator/
 
-### Additional features
+## Additional features
 
 - Input validation
 - Automated Unit / Integration Tests
@@ -14,43 +14,43 @@ Visit here: https://theodoremoreland.github.io/PasswordGenerator/
 - Music
 - Sound effects
 
-### Technologies Used
+## Technologies Used
 
 - HTML5
 - CSS3
 - JavaScript (ES6)
 - Jest
 
-# Screenshots
+## Screenshots
 
-## Default view (Galaxy Fold emulation)
+### Default view (Galaxy Fold emulation)
 
 <img src="presentation/1.PNG" width="250">
 
-## Default view
+### Default view
 
 <img src="presentation/2.PNG" width="800">
 
-## Initial prompt (for desired length of password)
+### Initial prompt (for desired length of password)
 
 <img src="presentation/3.PNG" width="800">
 
-## Second prompt
+### Second prompt
 
 <img src="presentation/4.PNG" width="800">
 
-## Third prompt
+### Third prompt
 
 <img src="presentation/5.PNG" width="800">
 
-## Fourth prompt
+### Fourth prompt
 
 <img src="presentation/6.PNG" width="800">
 
-## Fifth prompt
+### Fifth prompt
 
 <img src="presentation/7.PNG" width="800">
 
-## Result
+### Result
 
 <img src="presentation/8.PNG" width="800">
