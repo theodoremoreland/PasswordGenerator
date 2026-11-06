@@ -22,7 +22,7 @@ window.addEventListener("load", () => {
 
       ctx.fillStyle = "rgba(0, 0, 0, 0.05)"; // Draw a translucent background to create the trailing/fade effect
       ctx.fillRect(0, 0, canvas.width, canvas.height);
-      ctx.font = fontSize + "px";
+      ctx.font = fontSize + "px sans-serif";
 
       for (let i = 0; i < columnPositions.length; i++) {
         const currentRow = columnPositions[i];
@@ -59,7 +59,7 @@ window.addEventListener("load", () => {
     };
 
     animationFrameIdRef.current = requestAnimationFrame(animate); // Initial draw to avoid a blank canvas on load
-  }
 
-  draw(); // Initial draw to avoid a blank canvas on load
+    draw(); // Initial draw to avoid a blank canvas on load
+  }
 });
