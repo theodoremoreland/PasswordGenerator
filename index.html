@@ -1,6 +1,5 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -9,7 +8,7 @@
     <title>Password Generator</title>
 
     <!-- <a href="https://icons8.com/icon/EezKoqfhA0Ns/decision">Decision icon by Icons8</a> -->
-    <link rel="icon" type="image/png" href="assets/images/favicon.png">
+    <link rel="icon" type="image/png" href="assets/images/favicon.png" />
 
     <!-- Styles -->
     <link rel="stylesheet" href="assets/css/style.css" />
@@ -20,24 +19,36 @@
   </head>
 
   <body>
-    <div id="overlay"></div>
-    <div class="wrapper">
+    <main class="wrapper">
       <header>
         <h1>Password Generator</h1>
       </header>
       <div class="card">
         <div class="card-body">
-          <textarea readonly id="password" placeholder="Your secure password"
-            aria-label="Generated Password"></textarea>
+          <textarea
+            readonly
+            id="password"
+            placeholder="Your secure password"
+            aria-label="Generated Password"
+          ></textarea>
         </div>
         <div class="card-footer">
           <button id="generate" class="btn">Generate Password</button>
         </div>
       </div>
-    </div>
+    </main>
     <audio id="sfx"></audio>
-    <audio autoplay id="music" src="assets/sounds/music.mp3" loop="loop" muted="true">
-    </audio>
+    <audio
+      autoplay
+      id="music"
+      src="assets/sounds/music.mp3"
+      loop="loop"
+      muted="true"
+    ></audio>
+    <div class="DigitalRainContainer">
+      <canvas class="DigitalRain">
+        A The Matrix-style wall of falling text.
+      </canvas>
+    </div>
   </body>
-
 </html>
