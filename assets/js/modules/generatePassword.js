@@ -31,7 +31,7 @@ export const scramblePassword = (password) => {
 export const generatePassword = (
   desiredPasswordLength,
   password,
-  characterSets
+  characterSets,
 ) => {
   for (const key of Object.keys(characterSets)) {
     const randomCharacter = selectRandomCharacter(characterSets[key]);
@@ -45,5 +45,9 @@ export const generatePassword = (
     password += randomCharacter;
   }
 
-  return scramblePassword(password);
+  const scrambledPassword = scramblePassword(password);
+
+  window.KATAKANA = scrambledPassword;
+
+  return scrambledPassword;
 };

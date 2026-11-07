@@ -138,10 +138,11 @@ textarea {
   font-family: accent;
   font-size: 1rem;
   text-align: center;
+  color: whitesmoke;
+  background-color: rgba(0, 0, 0, 0.007);
+  backdrop-filter: blur(5px);
   border: 2px solid var(--primary-color);
   border-radius: 6px;
-  background-color: whitesmoke;
-  color: var(--secondary-color);
   resize: none;
   overflow: hidden;
 }

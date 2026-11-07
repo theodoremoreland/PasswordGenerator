@@ -1,7 +1,7 @@
-const KATAKANA = "ｱｲｳｴｵｶｷｸｹｺｻｼｽｾ#*^-=+x/:_<>01".split("");
+window.KATAKANA = "01".split("");
 const fontSize = 24;
-let timestampOfLastAnimateRef = { current: 0 };
-let animationFrameIdRef = { current: 0 };
+let timestampOfLastAnimate = 0;
+let animationFrameId = 0;
 
 window.addEventListener("load", () => {
   const canvas = document.querySelector(".DigitalRain");
@@ -22,16 +22,16 @@ window.addEventListener("load", () => {
 
       ctx.fillStyle = "rgba(0, 0, 0, 0.05)"; // Draw a translucent background to create the trailing/fade effect
       ctx.fillRect(0, 0, canvas.width, canvas.height);
-      ctx.font = fontSize + "px sans-serif";
+      ctx.font = fontSize + "px body, sans-serif";
 
       for (let i = 0; i < columnPositions.length; i++) {
         const currentRow = columnPositions[i];
         const currentColumn = i;
 
         const randomKatakanaCharacter =
-          KATAKANA[Math.floor(Math.random() * KATAKANA.length)];
+          window.KATAKANA[Math.floor(Math.random() * KATAKANA.length)];
 
-        ctx.fillStyle = "#e2e2e2c0";
+        ctx.fillStyle = "#2500ccc0";
         ctx.fillText(
           randomKatakanaCharacter,
           currentColumn * fontSize,
@@ -48,17 +48,17 @@ window.addEventListener("load", () => {
     };
 
     const animate = (time) => {
-      const delta = time - timestampOfLastAnimateRef.current;
+      const delta = time - timestampOfLastAnimate;
 
       if (delta >= 80) {
         draw();
-        timestampOfLastAnimateRef.current = time;
+        timestampOfLastAnimate = time;
       }
 
-      animationFrameIdRef.current = requestAnimationFrame(animate);
+      animationFrameId = requestAnimationFrame(animate);
     };
 
-    animationFrameIdRef.current = requestAnimationFrame(animate); // Initial draw to avoid a blank canvas on load
+    animationFrameId = requestAnimationFrame(animate); // Initial draw to avoid a blank canvas on load
 
     draw(); // Initial draw to avoid a blank canvas on load
   }
