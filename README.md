@@ -19,6 +19,8 @@ Visit here: https://theodoremoreland.github.io/PasswordGenerator/
 - HTML5
 - CSS3
 - JavaScript (ES6)
+- Vite
+- zxcvbn
 - Jest
 
 ## Screenshots
