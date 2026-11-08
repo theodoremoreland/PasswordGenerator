@@ -25,15 +25,87 @@
         <h1>Password Generator</h1>
       </header>
       <div class="card">
-        <div class="card-body">
-          <textarea
-            readonly
-            id="password"
-            placeholder="Your secure password"
-            aria-label="Generated Password"
-          ></textarea>
-        </div>
+        <textarea
+          readonly
+          id="password"
+          class="card-body"
+          placeholder="Your secure password"
+          aria-label="Generated Password"
+        ></textarea>
         <div class="card-footer">
+          <div class="range-container">
+            <label htmlFor="count" className="range-label">
+              <input
+                id="count"
+                aria-label="count"
+                name="count"
+                min="8"
+                max="128"
+                value="16"
+                type="range"
+                className="range"
+              />
+            </label>
+            128 characters
+          </div>
+          <div class="checkbox-container">
+            <li>
+              <label htmlFor="lowercase" className="checkbox-label">
+                <input
+                  id="lowercase"
+                  aria-label="lowercase"
+                  name="lowercase"
+                  type="checkbox"
+                  checked
+                  className="checkbox"
+                  readonly
+                />
+                Lowercase
+              </label>
+            </li>
+            <li>
+              <label htmlFor="uppercase" className="checkbox-label">
+                <input
+                  id="uppercase"
+                  aria-label="uppercase"
+                  name="uppercase"
+                  type="checkbox"
+                  checked
+                  className="checkbox"
+                  readonly
+                />
+                Uppercase
+              </label>
+            </li>
+            <li>
+              <label htmlFor="numbers" className="checkbox-label">
+                <input
+                  id="numbers"
+                  aria-label="numbers"
+                  name="numbers"
+                  type="checkbox"
+                  checked
+                  className="checkbox"
+                  readonly
+                />
+                Numbers
+              </label>
+            </li>
+            <li>
+              <label htmlFor="symbols" className="checkbox-label">
+                <input
+                  id="symbols"
+                  aria-label="symbols"
+                  name="symbols"
+                  type="checkbox"
+                  checked
+                  className="checkbox"
+                  readonly
+                />
+                Symbols
+              </label>
+            </li>
+          </div>
           <button id="generate" class="btn">Generate Password</button>
         </div>
       </div>

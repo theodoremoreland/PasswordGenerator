@@ -39,6 +39,14 @@
   --tertiary-color: #0c0032;
   --quaternary-color: #240090;
   --quinary-color: #282828;
+
+  --grade-0: color-mix(in srgb, var(var(--primary-color)), red 0%);
+  --grade-1: color-mix(in srgb, var(var(--primary-color)), red 0%);
+  --grade-2: color-mix(in srgb, var(var(--primary-color)), red 0%);
+  --grade-3: color-mix(in srgb, var(var(--primary-color)), red 0%);
+  --grade-4: color-mix(in srgb, var(var(--primary-color)), red 0%);
+
+  --primary-font-color: #ffffff;
 }
 
 /* ___________________ GLOBAL ____________________________ */
@@ -71,6 +79,31 @@ body {
   }
 }
 
+input[type="range"],
+input[type="range"]::-webkit-slider-runnable-track,
+input[type="range"]::-moz-range-track {
+  height: 5px;
+  background-color: var(--primary-color);
+  border-radius: 16px;
+}
+
+input[type="range"]::-webkit-slider-thumb,
+input[type="range"]::-moz-range-thumb {
+  /* removing default appearance */
+  -webkit-appearance: none;
+  appearance: none;
+  height: 1rem;
+  width: 1rem;
+  background-color: var(--tertiary-color);
+  border-radius: 50%;
+  border: 1px solid var(--primary-color);
+}
+
+input[type="checkbox"] {
+  color: var(--primary-font-color);
+  accent-color: var(--primary-color);
+}
+
 .DigitalRainContainer {
   position: absolute;
   top: 0;
@@ -86,7 +119,7 @@ body {
     display: block;
     width: 100%;
     height: 100%;
-    color: white;
+    color: var(--primary-font-color);
     background-color: black;
   }
 }
@@ -104,51 +137,70 @@ body {
 header {
   text-align: center;
   padding: 5px;
-  color: var(--primary-color);
+  color: var(--primary-font-color);
 }
 
 .card {
-  background-color: rgba(13, 13, 105, 0);
-  border-radius: 5px;
-  border-width: 1px;
-  box-shadow: rgba(0, 0, 0, 0) 0px 2px 8px 0px;
-  color: var(--primary-color);
-  font-size: 18px;
-  height: 100%;
+  position: relative;
   width: 100%;
   max-width: 800px;
+  height: 100%;
+  color: var(--primary-color);
+  font-size: 18px;
 }
 
 .card-body {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   min-height: 100px;
-}
-
-textarea {
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-  border: none;
-  display: block;
-  height: 100%;
   width: 100%;
-  padding-top: 15px;
-  padding-left: 15px;
-  padding-right: 15px;
-  padding-bottom: 85px;
   font-family: accent;
   font-size: 1rem;
   text-align: center;
-  color: whitesmoke;
+  color: var(--primary-font-color);
+  padding: 15px;
   background-color: rgba(0, 0, 0, 0.007);
   backdrop-filter: blur(5px);
+  box-shadow: rgba(0, 0, 0, 0) 0px 2px 8px 0px;
   border: 2px solid var(--primary-color);
   border-radius: 6px;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
   resize: none;
   overflow: hidden;
 }
 
+.checkbox-container,
+.range-container {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  color: var(--primary-font-color);
+  background-color: transparent;
+  border-radius: 6px;
+
+  li {
+    list-style: none;
+  }
+}
+
 .card-footer {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
   text-align: center;
+  padding: 1rem;
 }
 
 .btn {
@@ -161,7 +213,6 @@ textarea {
   font-size: 1rem;
   font-family: body;
   line-height: 22px;
-  margin: 16px 16px 16px 20px;
   padding: 14px 34px;
   text-align: center;
   cursor: pointer;
