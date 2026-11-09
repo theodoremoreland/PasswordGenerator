@@ -63,6 +63,7 @@ const specialCharacters = new CharacterSet("symbols", [
 const writePassword = () => {
   const countElement = document.querySelector("#count");
   const desiredPasswordLength = countElement.value;
+  const countDisplayElement = document.querySelector("#count-display");
   const shouldHaveLowercaseChars = document.querySelector("#lowercase").checked;
   const shouldHaveUppercaseChars = document.querySelector("#uppercase").checked;
   const shouldHaveNumbers = document.querySelector("#numbers").checked;
@@ -109,6 +110,7 @@ const writePassword = () => {
   4 # very unguessable: strong protection from offline slow-hash scenario. (guesses >= 10^10)
   */
     const meta = zxcvbn(password);
+    countDisplayElement.textContent = `${desiredPasswordLength} characters`; // Fallback in case password was generated on page load and count display was not updated manually
     passwordStrengthElement.textContent = meta.score;
     timeToCrackElement.textContent =
       meta.crack_times_display.online_no_throttling_10_per_second;

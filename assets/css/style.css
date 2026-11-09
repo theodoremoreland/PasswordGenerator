@@ -265,6 +265,10 @@ input[type="checkbox"] {
   }
 }
 
+#count-display {
+  min-width: 12ch;
+}
+
 .card-footer {
   position: relative;
   display: flex;
