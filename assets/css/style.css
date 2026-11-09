@@ -233,7 +233,7 @@ input[type="checkbox"] {
   font-size: 18px;
 }
 
-.card-body {
+textarea.card-body {
   position: relative;
   display: flex;
   flex-direction: column;
@@ -256,6 +256,13 @@ input[type="checkbox"] {
   appearance: none;
   resize: none;
   overflow: hidden;
+
+  &:focus,
+  &:active,
+  &:focus-within,
+  &:focus-visible {
+    outline: 1px solid var(--primary-font-color);
+  }
 }
 
 .checkbox-container,

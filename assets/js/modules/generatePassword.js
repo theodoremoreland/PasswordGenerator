@@ -2,7 +2,7 @@ import zxcvbn from "zxcvbn";
 
 export const selectRandomCharacterSet = (characterSets) => {
   const keys = Object.keys(characterSets);
-  const randomKeyIndex = Math.floor(Math.random() * (keys.length - 1));
+  const randomKeyIndex = Math.round(Math.random() * (keys.length - 1));
   const randomKey = keys[randomKeyIndex];
   const randomCharacterSet = characterSets[randomKey];
 

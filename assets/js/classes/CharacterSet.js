@@ -1,7 +1,6 @@
 export default class CharacterSet {
-  constructor(name, characters, approved = true) {
+  constructor(name, characters) {
     this.name = name;
     this.characters = characters;
-    this.approved = approved;
   }
 }

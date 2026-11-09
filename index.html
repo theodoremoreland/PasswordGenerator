@@ -16,6 +16,7 @@
     <!-- JS -->
     <script type="module" defer src="assets/js/modules/digitalRain.js"></script>
     <script defer src="assets/js/modules/playMusic.js"></script>
+    <script defer src="assets/js/modules/handleRangeChange.js"></script>
     <script type="module" defer src="assets/js/main.js"></script>
   </head>
 
@@ -52,11 +53,15 @@
     <main class="wrapper">
       <div class="card">
         <textarea
-          readonly
           id="password"
           class="card-body"
-          placeholder="Your secure password"
-          aria-label="Generated Password"
+          placeholder="Your password"
+          spellcheck="false"
+          autocomplete="off"
+          autocorrect="off"
+          autocapitalize="off"
+          aria-label="Your password"
+          maxlength="128"
         ></textarea>
         <div class="card-footer">
           <div class="range-container">
@@ -72,7 +77,7 @@
                 className="range"
               />
             </label>
-            128 characters
+            <span id="count-display">16 characters</span>
           </div>
           <div class="checkbox-container">
             <li>
@@ -84,7 +89,6 @@
                   type="checkbox"
                   checked
                   className="checkbox"
-                  readonly
                 />
                 Lowercase
               </label>
@@ -98,7 +102,6 @@
                   type="checkbox"
                   checked
                   className="checkbox"
-                  readonly
                 />
                 Uppercase
               </label>
@@ -112,7 +115,6 @@
                   type="checkbox"
                   checked
                   className="checkbox"
-                  readonly
                 />
                 Numbers
               </label>
@@ -126,7 +128,6 @@
                   type="checkbox"
                   checked
                   className="checkbox"
-                  readonly
                 />
                 Symbols
               </label>
