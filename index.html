@@ -54,6 +54,7 @@
     <main class="wrapper">
       <div class="card">
         <div class="card-body">
+          <span id="warnings-container"><mark id="warnings">testts</mark></span>
           <textarea
             id="password"
             placeholder="Your password"
@@ -136,7 +137,7 @@
               </label>
             </li>
           </div>
-          <button id="generate" class="btn">Generate password</button>
+          <button id="generate" class="btn">Generate new password</button>
         </div>
       </div>
     </main>
@@ -147,12 +148,12 @@
           <span id="password-strength">Strong</span>
         </li>
         <li class="result">
-          <span>Time to crack:</span>
-          <span id="time-to-crack">Centuries</span>
+          <span>Required # of guesses:</span>
+          <span id="guesses"></span>
         </li>
         <li class="result">
-          <span>Warnings:</span>
-          <span id="warnings">12</span>
+          <span>Time to crack:</span>
+          <span id="time-to-crack">Centuries</span>
         </li>
       </ul>
     </footer>

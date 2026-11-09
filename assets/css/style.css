@@ -35,6 +35,13 @@
   box-sizing: border-box;
 }
 
+html {
+  ::selection {
+    color: var(--primary-font-color);
+    background-color: var(--secondary-color);
+  }
+}
+
 html,
 body {
   height: 100%;
@@ -124,7 +131,7 @@ footer {
 
     #password-strength,
     #time-to-crack,
-    #warnings {
+    #guesses {
       font-size: 0.6rem;
       font-family: accent, sans-serif;
       padding: 0.2rem 0.5rem;
@@ -137,7 +144,7 @@ footer {
     #time-to-crack {
     }
 
-    #warnings {
+    #guesses {
     }
   }
 }
@@ -215,6 +222,26 @@ input[type="checkbox"] {
   position: relative;
 }
 
+#warnings-container {
+  position: absolute;
+  top: -2.5rem;
+  left: 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  text-align: center;
+  font-family: accent, sans-serif;
+  font-size: 0.75rem;
+
+  mark {
+    color: var(--primary-font-color);
+    background-color: rgba(139, 0, 0, 0.589);
+    padding: 6px 12px;
+  }
+}
+
 #password {
   position: relative;
   display: flex;
@@ -243,7 +270,7 @@ input[type="checkbox"] {
   &:active,
   &:focus-within,
   &:focus-visible {
-    outline: 1px solid var(--primary-font-color);
+    outline: 1px solid var(--primary-color);
   }
 }
 
