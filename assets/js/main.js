@@ -117,6 +117,7 @@ const handleTextAreaChange = debounce((event) => {
   }
 
   scorePassword(value);
+  window.KATAKANA = value;
 }, 450);
 
 const writePassword = () => {
