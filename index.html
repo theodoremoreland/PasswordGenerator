@@ -52,17 +52,19 @@
     </nav>
     <main class="wrapper">
       <div class="card">
-        <textarea
-          id="password"
-          class="card-body"
-          placeholder="Your password"
-          spellcheck="false"
-          autocomplete="off"
-          autocorrect="off"
-          autocapitalize="off"
-          aria-label="Your password"
-          maxlength="128"
-        ></textarea>
+        <div class="card-body">
+          <textarea
+            id="password"
+            placeholder="Your password"
+            spellcheck="false"
+            autocomplete="off"
+            autocorrect="off"
+            autocapitalize="off"
+            aria-label="Your password"
+            maxlength="128"
+          ></textarea>
+          <button id="copy-to-clipboard" class="btn sm">Copy</button>
+        </div>
         <div class="card-footer">
           <div class="range-container">
             <label htmlFor="count" className="range-label">
@@ -70,7 +72,7 @@
                 id="count"
                 aria-label="count"
                 name="count"
-                min="8"
+                min="4"
                 max="128"
                 value="16"
                 type="range"

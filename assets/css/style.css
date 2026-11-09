@@ -18,33 +18,11 @@
 /* ------------------- VARIABLES ------------------- */
 
 :root {
-  --header-xxl: 4rem header;
-  --header-xl: 2.8rem header;
-  --header-large: 2.25rem header;
-  --header-medium: 1.85rem header;
-  --header-small: 1.5rem header;
-  --header-xs: 1.2rem header;
-
-  --body-xxl: 1.8rem body;
-  --body-xl: 1.5rem body;
-  --body-large: 1.23rem body;
-  --body-medium: 1rem body;
-  --body-small: 0.9rem body;
-
-  --accent-medium: 1rem accent;
-  --accent-small: 0.8rem accent;
-
   --primary-color: #3f00fd;
   --secondary-color: #190061;
   --tertiary-color: #0c0032;
   --quaternary-color: #240090;
   --quinary-color: #282828;
-
-  --grade-0: color-mix(in srgb, var(var(--primary-color)), red 0%);
-  --grade-1: color-mix(in srgb, var(var(--primary-color)), red 0%);
-  --grade-2: color-mix(in srgb, var(var(--primary-color)), red 0%);
-  --grade-3: color-mix(in srgb, var(var(--primary-color)), red 0%);
-  --grade-4: color-mix(in srgb, var(var(--primary-color)), red 0%);
 
   --primary-font-color: #ffffff;
 }
@@ -233,7 +211,11 @@ input[type="checkbox"] {
   font-size: 18px;
 }
 
-textarea.card-body {
+.card-body {
+  position: relative;
+}
+
+#password {
   position: relative;
   display: flex;
   flex-direction: column;
@@ -308,6 +290,10 @@ textarea.card-body {
   text-align: center;
   cursor: pointer;
   border: solid 1px var(--primary-color);
+
+  &.sm {
+    padding: 7px 17px;
+  }
 }
 
 @media screen and (min-width: 1920px) {
@@ -320,34 +306,9 @@ textarea.card-body {
   filter: brightness(1.6);
 }
 
-#muteButton {
-  position: fixed;
-  left: 10px;
-  bottom: 35px;
-  opacity: 0.5;
-  font-size: 2.5rem;
-  cursor: pointer;
-}
-
-@media screen and (min-width: 360px) {
-  #muteButton {
-    left: 20px;
-    bottom: 25px;
-  }
-}
-
-#password {
-  cursor: not-allowed;
-}
-
-#password.copy-to-clipboard {
+#copy-to-clipboard {
+  position: absolute;
+  bottom: 1rem;
+  right: 1rem;
   cursor: copy;
-}
-
-#password.copy-to-clipboard:hover {
-  filter: brightness(1.2);
-}
-
-#password.copy-to-clipboard:active {
-  filter: brightness(1.4);
 }

@@ -1,14 +1,15 @@
 export default (e) => {
   const element = e.target;
+  const passwordElement = document.querySelector("#password");
 
-  if (!element.classList.contains("copy-to-clipboard")) {
+  if (!element || !passwordElement) {
     return;
   }
 
-  element.select();
-  element.setSelectionRange(0, 99999); // For mobile devices
+  passwordElement.select();
+  passwordElement.setSelectionRange(0, 99999); // For mobile devices
 
   // Copy the text inside the text field
-  navigator.clipboard.writeText(element.value);
+  navigator.clipboard.writeText(passwordElement.value);
   alert("Copied to clipboard");
 };

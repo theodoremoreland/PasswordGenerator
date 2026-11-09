@@ -1,5 +1,3 @@
-import zxcvbn from "zxcvbn";
-
 export const selectRandomCharacterSet = (characterSets) => {
   const keys = Object.keys(characterSets);
   const randomKeyIndex = Math.round(Math.random() * (keys.length - 1));
@@ -48,21 +46,6 @@ export const generatePassword = (
   }
 
   const scrambledPassword = scramblePassword(password);
-
-  window.KATAKANA = scrambledPassword;
-
-  /**
-  0 # too guessable: risky password. (guesses < 10^3)
-
-  1 # very guessable: protection from throttled online attacks. (guesses < 10^6)
-
-  2 # somewhat guessable: protection from unthrottled online attacks. (guesses < 10^8)
-
-  3 # safely unguessable: moderate protection from offline slow-hash scenario. (guesses < 10^10)
-
-  4 # very unguessable: strong protection from offline slow-hash scenario. (guesses >= 10^10)
-  */
-  window.SCORE = zxcvbn(scrambledPassword).score;
 
   return scrambledPassword;
 };
