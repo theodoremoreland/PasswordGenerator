@@ -120,3 +120,5 @@ const writePassword = () => {
 
 generateBtn.addEventListener("click", writePassword);
 copyButtonElement.addEventListener("click", copyToClipboard);
+
+writePassword();
