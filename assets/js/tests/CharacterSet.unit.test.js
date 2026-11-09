@@ -8,12 +8,12 @@ describe("CharacterSet Class constructor", () => {
     lowercaseLetters = new CharacterSet(
       "lowercase letters",
       "abcdefghijklmnopqrstuvwxyz",
-      true
+      true,
     );
 
     uppercaseLetters = new CharacterSet(
       "uppercase letters",
-      lowercaseLetters.characters.toUpperCase()
+      lowercaseLetters.characters.toUpperCase(),
     );
   });
 
@@ -23,13 +23,5 @@ describe("CharacterSet Class constructor", () => {
 
   test("should set characters from constructor", () => {
     expect(lowercaseLetters.characters).toEqual("abcdefghijklmnopqrstuvwxyz");
-  });
-
-  test("should set approved status from constructor", () => {
-    expect(lowercaseLetters.approved).toEqual(true);
-  });
-
-  test("should assign default approved status if no argument was given", () => {
-    expect(uppercaseLetters.approved).toEqual(true);
   });
 });

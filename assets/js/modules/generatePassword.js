@@ -1,6 +1,6 @@
 export const selectRandomCharacterSet = (characterSets) => {
   const keys = Object.keys(characterSets);
-  const randomKeyIndex = Math.floor(Math.random() * (keys.length - 1));
+  const randomKeyIndex = Math.round(Math.random() * (keys.length - 1));
   const randomKey = keys[randomKeyIndex];
   const randomCharacterSet = characterSets[randomKey];
 
@@ -31,7 +31,7 @@ export const scramblePassword = (password) => {
 export const generatePassword = (
   desiredPasswordLength,
   password,
-  characterSets
+  characterSets,
 ) => {
   for (const key of Object.keys(characterSets)) {
     const randomCharacter = selectRandomCharacter(characterSets[key]);
@@ -45,5 +45,7 @@ export const generatePassword = (
     password += randomCharacter;
   }
 
-  return scramblePassword(password);
+  const scrambledPassword = scramblePassword(password);
+
+  return scrambledPassword;
 };
