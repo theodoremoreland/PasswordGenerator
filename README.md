@@ -1,6 +1,6 @@
 # PasswordFX
 
-<img src="presentation/thumbnail.png" width="600">
+<img src="presentation/thumbnail.webp" width="600">
 
 Visit here: https://theodoremoreland.github.io/PasswordFX/
 
