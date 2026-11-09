@@ -61,7 +61,6 @@ const specialCharacters = new CharacterSet("symbols", [
 ]);
 
 const writePassword = () => {
-  const passwordText = document.querySelector("#password");
   const countElement = document.querySelector("#count");
   const desiredPasswordLength = countElement.value;
   const shouldHaveLowercaseChars = document.querySelector("#lowercase").checked;
