@@ -25,6 +25,8 @@
   --quinary-color: #282828;
 
   --primary-font-color: #ffffff;
+
+  --nav-height: 4.5rem;
 }
 
 /* ___________________ GLOBAL ____________________________ */
@@ -52,8 +54,9 @@ body {
 
 body {
   display: flex;
+  flex-direction: column;
   justify-content: center;
-  align-items: flex-start;
+  align-items: center;
   font-family: body;
   background-color: var(--quinary-color);
 }
@@ -75,7 +78,7 @@ nav {
   gap: 1rem;
   color: var(--primary-font-color);
   width: 100%;
-  height: 4.5rem;
+  height: var(--nav-height);
   padding: 0.2rem 2rem;
   background-color: rgba(0, 0, 0, 0.007);
   backdrop-filter: blur(5px);
@@ -90,13 +93,26 @@ nav {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 5px;
+    gap: 0;
     font-size: 0.9rem;
 
     svg {
       width: 1.65rem;
       height: 1.65rem;
       fill: var(--primary-font-color);
+    }
+
+    p {
+      display: none;
+      margin: 0;
+      padding: 0;
+      text-align: center;
+    }
+
+    @media screen and (min-width: 768px) {
+      p {
+        display: block;
+      }
     }
   }
 }
@@ -107,27 +123,44 @@ footer {
   left: 0;
   display: flex;
   flex-direction: row;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
   gap: 1rem;
   color: var(--primary-font-color);
   width: 100%;
-  height: 4.5rem;
+  height: var(--nav-height);
   padding: 0.2rem 2rem;
   background-color: rgba(0, 0, 0, 0.007);
   backdrop-filter: blur(5px);
   border-top: 1px solid var(--quaternary-color);
+  overflow-x: auto;
+
+  @media screen and (min-width: 1049px) {
+    justify-content: center;
+  }
 
   #results {
+    position: relative;
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
+    flex-wrap: nowrap;
     gap: 2rem;
-
+    min-width: 60rem;
+    width: 100%;
     list-style: none;
     padding: 0;
     margin: 0;
+
+    .result,
+    span {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: nowrap;
+    }
 
     #password-strength,
     #time-to-crack,
@@ -136,15 +169,6 @@ footer {
       font-family: accent, sans-serif;
       padding: 0.2rem 0.5rem;
       border-radius: 6px;
-    }
-
-    #password-strength {
-    }
-
-    #time-to-crack {
-    }
-
-    #guesses {
     }
   }
 }
@@ -205,8 +229,14 @@ input[type="checkbox"] {
   justify-content: center;
   align-items: center;
   padding: 20px;
-  width: 60vw;
+  width: 100vw;
   min-width: 300px;
+}
+
+@media screen and (min-width: 768px) {
+  .wrapper {
+    width: 60vw;
+  }
 }
 
 .card {
@@ -215,7 +245,13 @@ input[type="checkbox"] {
   max-width: 1000px;
   height: 100%;
   color: var(--primary-color);
-  font-size: 18px;
+  font-size: 1rem;
+}
+
+@media screen and (min-width: 768px) {
+  .card {
+    font-size: 1.2rem;
+  }
 }
 
 .card-body {
@@ -302,9 +338,17 @@ input[type="checkbox"] {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 1rem;
+  gap: 2rem;
   text-align: center;
   padding: 1rem;
+  padding-top: 2rem;
+}
+
+@media screen and (min-width: 768px) {
+  .card-footer {
+    gap: 1rem;
+    padding-top: 1rem;
+  }
 }
 
 .btn {
