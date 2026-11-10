@@ -67,6 +67,57 @@ body {
   }
 }
 
+a {
+  text-decoration: none;
+  color: var(--primary-font-color);
+}
+
+input[type="range"] {
+  /* removing default appearance */
+  -webkit-appearance: none;
+  appearance: none;
+  background: transparent;
+  width: 100%;
+  cursor: pointer;
+}
+
+input[type="range"]::-webkit-slider-runnable-track {
+  height: 5px;
+  background-color: var(--primary-color);
+  border-radius: 16px;
+}
+
+input[type="range"]::-moz-range-track {
+  height: 5px;
+  background-color: var(--primary-color);
+  border-radius: 16px;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  height: 1rem;
+  width: 1rem;
+  background-color: var(--tertiary-color);
+  border-radius: 50%;
+  border: 1px solid var(--primary-color);
+  /* Center the thumb vertically over the track:
+     Formula: (Track Height - Thumb Height) / 2
+     Example: (8px - 20px) / 2 = -6px */
+  margin-top: calc((5px - 1rem) / 2);
+}
+
+input[type="range"]::-moz-range-thumb {
+  height: 1rem;
+  width: 1rem;
+  background-color: var(--tertiary-color);
+  border-radius: 50%;
+  border: 1px solid var(--primary-color);
+}
+
+input[type="checkbox"] {
+  color: var(--primary-font-color);
+  accent-color: var(--primary-color);
+}
+
 nav {
   position: absolute;
   top: 0;
@@ -79,10 +130,14 @@ nav {
   color: var(--primary-font-color);
   width: 100%;
   height: var(--nav-height);
-  padding: 0.2rem 2rem;
+  padding: 0.2rem 20px;
   background-color: rgba(0, 0, 0, 0.007);
   backdrop-filter: blur(5px);
   border-bottom: 1px solid var(--quaternary-color);
+
+  @media screen and (min-width: 768px) {
+    padding: 0.2rem 2rem;
+  }
 
   h1 {
     font-size: 1.75rem;
@@ -171,57 +226,6 @@ footer {
       border-radius: 6px;
     }
   }
-}
-
-a {
-  text-decoration: none;
-  color: var(--primary-font-color);
-}
-
-input[type="range"] {
-  /* removing default appearance */
-  -webkit-appearance: none;
-  appearance: none;
-  background: transparent;
-  width: 100%;
-  cursor: pointer;
-}
-
-input[type="range"]::-webkit-slider-runnable-track {
-  height: 5px;
-  background-color: var(--primary-color);
-  border-radius: 16px;
-}
-
-input[type="range"]::-moz-range-track {
-  height: 5px;
-  background-color: var(--primary-color);
-  border-radius: 16px;
-}
-
-input[type="range"]::-webkit-slider-thumb {
-  height: 1rem;
-  width: 1rem;
-  background-color: var(--tertiary-color);
-  border-radius: 50%;
-  border: 1px solid var(--primary-color);
-  /* Center the thumb vertically over the track:
-     Formula: (Track Height - Thumb Height) / 2
-     Example: (8px - 20px) / 2 = -6px */
-  margin-top: calc((5px - 1rem) / 2);
-}
-
-input[type="range"]::-moz-range-thumb {
-  height: 1rem;
-  width: 1rem;
-  background-color: var(--tertiary-color);
-  border-radius: 50%;
-  border: 1px solid var(--primary-color);
-}
-
-input[type="checkbox"] {
-  color: var(--primary-font-color);
-  accent-color: var(--primary-color);
 }
 
 .DigitalRainContainer {
