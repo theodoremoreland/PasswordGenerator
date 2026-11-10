@@ -178,19 +178,40 @@ a {
   color: var(--primary-font-color);
 }
 
-input[type="range"],
-input[type="range"]::-webkit-slider-runnable-track,
+input[type="range"] {
+  /* removing default appearance */
+  -webkit-appearance: none;
+  appearance: none;
+  background: transparent;
+  width: 100%;
+  cursor: pointer;
+}
+
+input[type="range"]::-webkit-slider-runnable-track {
+  height: 5px;
+  background-color: var(--primary-color);
+  border-radius: 16px;
+}
+
 input[type="range"]::-moz-range-track {
   height: 5px;
   background-color: var(--primary-color);
   border-radius: 16px;
 }
 
-input[type="range"]::-webkit-slider-thumb,
+input[type="range"]::-webkit-slider-thumb {
+  height: 1rem;
+  width: 1rem;
+  background-color: var(--tertiary-color);
+  border-radius: 50%;
+  border: 1px solid var(--primary-color);
+  /* Center the thumb vertically over the track:
+     Formula: (Track Height - Thumb Height) / 2
+     Example: (8px - 20px) / 2 = -6px */
+  margin-top: calc((5px - 1rem) / 2);
+}
+
 input[type="range"]::-moz-range-thumb {
-  /* removing default appearance */
-  -webkit-appearance: none;
-  appearance: none;
   height: 1rem;
   width: 1rem;
   background-color: var(--tertiary-color);
@@ -260,7 +281,7 @@ input[type="checkbox"] {
 
 #warnings-container {
   position: absolute;
-  top: -2.5rem;
+  top: -3.5rem;
   left: 0;
   display: flex;
   flex-direction: row;
