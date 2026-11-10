@@ -23,7 +23,6 @@ Generate passwords and review their strength.
 - JavaScript (ES6)
 - Vite
 - zxcvbn
-- Jest
 
 ## Screenshots
 
