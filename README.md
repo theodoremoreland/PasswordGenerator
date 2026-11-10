@@ -1,6 +1,6 @@
 # PasswordFX
 
-<img src="https://dj8eg5xs13hf6.cloudfront.net/password-fx/1.png" width="650">
+<img src="presentation/thumbnail.webp" width="700">
 
 Visit here: https://theodoremoreland.github.io/PasswordFX/
 
@@ -27,6 +27,8 @@ Generate passwords and review their strength.
 ## Screenshots
 
 ### Desktop
+
+<img src="https://dj8eg5xs13hf6.cloudfront.net/password-fx/1.png" width="650">
 
 <img src="https://dj8eg5xs13hf6.cloudfront.net/password-fx/2.png" width="650">
 
